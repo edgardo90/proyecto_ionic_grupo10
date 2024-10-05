@@ -1,0 +1,7 @@
+{
+  "name": "proyecto_grupal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

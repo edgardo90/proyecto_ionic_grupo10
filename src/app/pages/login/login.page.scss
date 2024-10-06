@@ -1,0 +1,12 @@
+::ng-deep .custom-alert .alert-title {
+    color: #f42a2a;
+    /* Color deseado del texto del header */
+}
+
+::ng-deep .custom-alert .alert-button {
+    color: #035fa5;
+    /* Color deseado del texto del header */
+    background-color: white ;
+    padding: 4px;
+    border-radius: 5px;
+}

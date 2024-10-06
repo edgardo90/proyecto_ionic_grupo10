@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registrarse</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="tertiary"> </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="registerUser()">
+    <ion-item>
+      <ion-input
+        label="Email"
+        type="email"
+        label-placement="floating"
+        aria-label="Email"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Password"
+        type="password"
+        label-placement="floating"
+        name="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+      ></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit">Crear usuario</ion-button>
+  </form>
+</ion-content>

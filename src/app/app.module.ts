@@ -7,10 +7,29 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AngularFireAuthModule } from "@angular/fire/compat/auth"; // esto lo instale
+import { AngularFireModule } from "@angular/fire/compat"; // esto lo instale
+import { environment } from "src/environments/environment";
+
+import { provideHttpClient } from '@angular/common/http';// esto despues lo pruebo , Angular V18
+
+import { LoginService } from "src/app/services/login.service"
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideHttpClient(), // importo Proveedor1Service en el array "providers", esta es la version nueva angular 18
+    LoginService
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+
+export class AppModule { }

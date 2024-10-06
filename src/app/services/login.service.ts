@@ -19,5 +19,15 @@ export class LoginService {
       return null
     }
   }
-  
+
+  async postRegisterUser(email: string, password: string) {
+    let res;
+    let err;
+    try {
+      res = await this.auth.createUserWithEmailAndPassword(email, password);
+    } catch (error:any) {
+      err = error
+    }
+    return {res , err}
+  }
 }

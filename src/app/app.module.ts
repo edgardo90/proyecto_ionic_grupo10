@@ -11,9 +11,10 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth"; // esto lo in
 import { AngularFireModule } from "@angular/fire/compat"; // esto lo instale
 import { environment } from "src/environments/environment";
 
-import { provideHttpClient } from '@angular/common/http';// esto despues lo pruebo , Angular V18
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';// esto despues lo pruebo , Angular V18
 
 import { LoginService } from "src/app/services/login.service"
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,9 @@ import { LoginService } from "src/app/services/login.service"
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
+    
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

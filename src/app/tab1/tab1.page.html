@@ -5,13 +5,30 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-input class="custom-input" [(ngModel)]="nombrePersonaje" style="display: inline-block;" 
+      (keydown.enter)="SearchCharacter()" placeholder="ingresar nombre"></ion-input>  
+    <ion-button (click)="SearchCharacter()">Buscar</ion-button>
+  </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  {{error}}
+
+  <ion-card>
+    <ul *ngIf="characters.length > 0" class="containers">
+      <li *ngFor="let character of characters">
+        <ion-card-content class="cardContainer">
+          <ion-list>
+            <ion-item class="cardItem">
+              <a>
+                <img [src]="character.image.url"> 
+              </a>
+              <ion-label>{{character.name}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </li>
+    </ul>
+  </ion-card>
 </ion-content>

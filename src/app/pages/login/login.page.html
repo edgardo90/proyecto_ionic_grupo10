@@ -1,12 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>LOGIN</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <form (ngSubmit)="loginSubmit()">
-    <ion-item>
+<ion-content class="fondo-login ion-padding">
+
+  <div class="logo-container">
+    <br>
+    <ion-img src="assets/img/logo.png" alt="Superhéroe" class="logo"></ion-img>
+    <br>
+</div>
+    
+  <form  (ngSubmit)="loginSubmit()" >
+    <br>
+   <P style="font-weight: bolder;">INICIO DE SESION</P> 
+    <ion-item class="fondo-login">
+    
       <ion-input
         label="Email"
         type="email"
@@ -20,7 +30,7 @@
       </ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="fondo-login">
       <ion-input
         label="Password"
         type="password"
@@ -37,7 +47,7 @@
   </form>
   
   <br />
-  <ion-label [routerLink]="'/register'" style="cursor: pointer; color: aquamarine;">
-    No tienes usuario? Regístrate
+  <ion-label [routerLink]="'/register'" style="cursor: pointer; color: rgb(26, 18, 176);">
+    No tenés usuario? Registrate
   </ion-label>
 </ion-content>

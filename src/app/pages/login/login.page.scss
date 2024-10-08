@@ -6,7 +6,26 @@
 ::ng-deep .custom-alert .alert-button {
     color: #035fa5;
     /* Color deseado del texto del header */
-    background-color: white ;
+    background-color: rgb(255, 255, 255) ;
     padding: 4px;
     border-radius: 5px;
 }
+
+::ng-deep .fondo-login {
+    --background: #add8e6 !important;
+  
+  }
+
+::ng-deep .logo {
+    width: 70%;
+    height: 70%;
+   
+  }
+
+  ::ng-deep .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  

@@ -24,7 +24,6 @@ export class Tab1Page {
   personajes :any[] = []; // se crea un arreglo para almacenar los personajes
   error : string = ''; // se crea una variable para almacenar los errores
   nombrePersonaje:string = ''; // se crea una variable para almacenar el nombre del personaje
-  //personaje: any;
   
 
   constructor(
@@ -37,6 +36,8 @@ export class Tab1Page {
   goToCharacterDetail(id: number) {
     this.router.navigate(['/tabs/tab2', id]); // Navegar con el ID del personaje
   }
+
+  
   SearchCharacter() {
     if (this.nombrePersonaje.trim()) { // Verificamos que se haya ingresado un nombre
       this.llamarApi(this.nombrePersonaje);

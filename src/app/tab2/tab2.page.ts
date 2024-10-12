@@ -23,6 +23,8 @@ export class Tab2Page implements OnInit {
     }
   }
 
+
+  // obtengo el personaje por id desde tab1 y lo muestro en tab2
   obtenerPersonaje(id: string) {
     this.characterService.getCharacterById(id).subscribe(
       (data: any) => {

@@ -14,11 +14,17 @@ export class CharacterService {
   private endPoint = environment.apiConfig.endPoint;
 
   constructor(
-    private http:HttpClient
+   private http: HttpClient
   ) { }
 
   getCharacters(personaje: string):Observable<any>{
     const url = `${this.apiUrl}${this.token}${this.endPoint}${personaje}`;
     return this.http.get<any>(url);
   }
+
+  getCharacterById(id:string){
+    return this.http.get<any>(`${this.apiUrl}${this.token}/${id}`);
+  }
+
+  
 }

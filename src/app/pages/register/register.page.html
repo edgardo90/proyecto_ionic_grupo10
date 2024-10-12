@@ -7,9 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="fondo-login ion-padding" >
+
+  <div class="logo-container">
+    <br>
+    <ion-img src="assets/img/logo.png" alt="Superhéroe" class="logo"></ion-img>
+    <br>
+</div>
+
   <form (ngSubmit)="registerUser()">
-    <ion-item>
+    <br>
+    <P style="font-weight: bolder;">CREÁ UNA CUENTA</P> 
+    <ion-item class="fondo-login">
       <ion-input
         label="Email"
         type="email"
@@ -22,7 +31,7 @@
       </ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="fondo-login">
       <ion-input
         label="Password"
         type="password"

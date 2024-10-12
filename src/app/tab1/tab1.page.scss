@@ -1,0 +1,59 @@
+.errorTitle{
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+.error {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.container{
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    flex-direction: column;   /* Asegura que los elementos se coloquen en columna */
+    text-align: center; 
+}
+.lista p, h2{
+   text-align: center;
+  /* Asegura que los elementos se coloquen en columna */
+}
+.title{
+    
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+li{
+    list-style: none;
+    text-align: center;
+}
+
+.containerAtributos{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 150px);
+}
+.containers{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.cardItem img{
+    width:100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 100%;
+}
+.cardItem ion-label {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cardItem:hover{
+    transform: scale(1);
+    cursor: pointer;
+
+}

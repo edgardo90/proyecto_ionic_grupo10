@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../services/character.service';
+import { Tab3Page } from '../tab3/tab3.page';
 
 @Component({
   selector: 'app-tab2',
@@ -8,11 +9,13 @@ import { CharacterService } from '../services/character.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
+
   personaje: any; // Variable para almacenar los datos del personaje
 
   constructor(
     private route: ActivatedRoute,
-    private characterService: CharacterService
+    private characterService: CharacterService,
+    private tab3Page: Tab3Page
   ) {}
 
   ngOnInit() {
@@ -41,4 +44,14 @@ export class Tab2Page implements OnInit {
       }
     );
   }
+
+/**
+ * @function AgregarFavoritos
+ * @description Para llamar a un método en tab3.page.ts, donde guardamos los personajes favoritos en una lista
+ * @param {any} personaje - El personaje elegido como favorito
+ */
+  AgregarFavoritos(personaje: any) {
+    this.tab3Page.Agregar_favoritos(personaje);
+    console.log("Agregado a favoritos");
+    }
 }

@@ -11,42 +11,53 @@
     <ion-card-header>
       <ion-card-title>{{personaje.name}}</ion-card-title>
       <img [src]="personaje.image.url" class="character-image">
+      <ion-button class="favorite-button" (click)="AgregarFavoritos(personaje)">Agregar a Favoritos</ion-button>
     </ion-card-header>
 
     <ion-card-content>
-      <h2>Información Personal</h2>
-      <p><strong>Nombre Completo:</strong> {{ personaje.biography['full-name'] }}</p>
-      <p><strong>Identidad Secreta:</strong> {{ personaje.biography['alter-egos'] }}</p>
-      <p><strong>Género:</strong> {{ personaje.appearance.gender }}</p>
-      <p><strong>Color de Ojos:</strong> {{ personaje.appearance['eye-color'] }}</p>
-      <p><strong>Color de Pelo:</strong> {{ personaje.appearance['hair-color'] }}</p>
-      <p><strong>Altura:</strong> {{ personaje.appearance.height.join(', ') }}</p>
-      <p><strong>Peso:</strong> {{ personaje.appearance.weight.join(', ') }}</p>
-      <p><strong>Raza:</strong> {{ personaje.appearance.race }}</p>
-      <p><strong>Lugar de Nacimiento:</strong> {{ personaje.biography['place-of-birth'] }}</p>
+      <div class="section">
+        <h2>Información Personal</h2>
+        <p><strong>Nombre Completo:</strong> {{ personaje.biography['full-name'] }}</p>
+        <p><strong>Identidad Secreta:</strong> {{ personaje.biography['secret identity'] }}</p>
+        <p><strong>Género:</strong> {{ personaje.appearance.gender }}</p>
+        <p><strong>Color de Ojos:</strong> {{ personaje.appearance['eye-color'] }}</p>
+        <p><strong>Color de Pelo:</strong> {{ personaje.appearance['hair-color'] }}</p>
+        <p><strong>Altura:</strong> {{ personaje.appearance.height.join(', ') }}</p>
+        <p><strong>Peso:</strong> {{ personaje.appearance.weight.join(', ') }}</p>
+        <p><strong>Raza:</strong> {{ personaje.appearance.race }}</p>
+        <p><strong>Lugar de Nacimiento:</strong> {{ personaje.biography['place-of-birth'] }}</p>
+      </div>
 
-      <h2>Biografía</h2>
-      <p><strong>Alias:</strong> {{ personaje.biography.aliases.join(', ') }}</p>
-      <p><strong>Primera Aparición:</strong> {{ personaje.biography['first-appearance'] }}</p>
-      <p><strong>Publicador:</strong> {{ personaje.biography.publisher }}</p>
-      <p><strong>Alineación:</strong> {{ personaje.biography.alignment }}</p>
-      <p><strong>Alter Egos:</strong> {{ personaje.biography['alter-egos'] }}</p>
+      <div class="section">
+        <h2>Biografía</h2>
+        <p><strong>Alias:</strong> {{ personaje.biography.aliases.join(', ') }}</p>
+        <p><strong>Primera Aparición:</strong> {{ personaje.biography['first-appearance'] }}</p>
+        <p><strong>Publicador:</strong> {{ personaje.biography.publisher }}</p>
+        <p><strong>Alineación:</strong> {{ personaje.biography.alignment }}</p>
+        <p><strong>Alter Egos:</strong> {{ personaje.biography['alter-egos'] }}</p>
+      </div>
 
-      <h2>Conexiones</h2>
-      <p><strong>Grupo de Afiliación:</strong> {{ personaje.connections['group-affiliation'] }}</p>
-      <p><strong>Relativos:</strong> {{ personaje.connections.relatives }}</p>
+      <div class="section">
+        <h2>Conexiones</h2>
+        <p><strong>Grupo de Afiliación:</strong> {{ personaje.connections['group-affiliation'] }}</p>
+        <p><strong>Relativos:</strong> {{ personaje.connections.relatives }}</p>
+      </div>
 
-      <h2>Poderes y Habilidades</h2>
-      <p><strong>Combate:</strong> {{ personaje.powerstats.combat }}</p>
-      <p><strong>Durabilidad:</strong> {{ personaje.powerstats.durability }}</p>
-      <p><strong>Inteligencia:</strong> {{ personaje.powerstats.intelligence }}</p>
-      <p><strong>Poder:</strong> {{ personaje.powerstats.power }}</p>
-      <p><strong>Velocidad:</strong> {{ personaje.powerstats.speed }}</p>
-      <p><strong>Fuerza:</strong> {{ personaje.powerstats.strength }}</p>
+      <div class="section">
+        <h2>Poderes y Habilidades</h2>
+        <p><strong>Combate:</strong> {{ personaje.powerstats.combat }}</p>
+        <p><strong>Durabilidad:</strong> {{ personaje.powerstats.durability }}</p>
+        <p><strong>Inteligencia:</strong> {{ personaje.powerstats.intelligence }}</p>
+        <p><strong>Poder:</strong> {{ personaje.powerstats.power }}</p>
+        <p><strong>Velocidad:</strong> {{ personaje.powerstats.speed }}</p>
+        <p><strong>Fuerza:</strong> {{ personaje.powerstats.strength }}</p>
+      </div>
 
-      <h2>Trabajo</h2>
-      <p><strong>Ocupación:</strong> {{ personaje.work.occupation }}</p>
-      <p><strong>Base:</strong> {{ personaje.work.base }}</p>
+      <div class="section">
+        <h2>Trabajo</h2>
+        <p><strong>Ocupación:</strong> {{ personaje.work.occupation }}</p>
+        <p><strong>Base:</strong> {{ personaje.work.base }}</p>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

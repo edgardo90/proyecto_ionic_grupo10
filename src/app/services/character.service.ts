@@ -41,5 +41,5 @@ export class CharacterService {
     return this.http.get<any>(`${this.apiUrl}${this.token}/${id}`);
   }
 
-  
+
 }

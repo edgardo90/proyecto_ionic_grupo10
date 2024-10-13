@@ -6,16 +6,17 @@
 
 <ion-content class="fondo-login ion-padding">
 
+  
   <div class="logo-container">
-    <br>
-    <ion-img src="assets/img/logo.png" alt="Superhéroe" class="logo"></ion-img>
-    <br>
+    
+    <ion-img src="assets/img/logo2.png" alt="Superhéroe" class="logo"></ion-img>
+   
 </div>
     
   <form  (ngSubmit)="loginSubmit()" >
     <br>
-   <P style="font-weight: bolder;">INICIO DE SESION</P> 
-    <ion-item class="fondo-login">
+   <P style="font-weight: bolder; font-size: large; color: seashell;">Accedé a tu cuenta</P> 
+    <ion-item >
     
       <ion-input
         label="Email"
@@ -30,7 +31,7 @@
       </ion-input>
     </ion-item>
 
-    <ion-item class="fondo-login">
+    <ion-item >
       <ion-input
         label="Password"
         type="password"
@@ -43,11 +44,13 @@
       ></ion-input>
     </ion-item>
 
-    <ion-button expand="full" type="submit">Login</ion-button>
+    <ion-button expand="full" type="submit" color="rojizo" class="btninicio-sesion">INICIAR SESIÓN</ion-button>
   </form>
   
   <br />
-  <ion-label [routerLink]="'/register'" style="cursor: pointer; color: rgb(26, 18, 176);">
-    No tenés usuario? Registrate
+  <ion-label [routerLink]="'/register'" >
+   <p style="cursor: pointer; color: rgb(26, 18, 176); text-align:end;">No tenés usuario? REGISTRATE</p>
   </ion-label>
+
+
 </ion-content>

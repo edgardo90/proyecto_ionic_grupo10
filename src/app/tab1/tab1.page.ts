@@ -48,7 +48,6 @@ export class Tab1Page {
   * @description Buscar un personaje por nombre ingresado por el usuario.
    *              Si el nombre ingresado no está vacío, llama a la función llamarApi para buscar el personaje.
    *              Si el nombre está vacío, establece un mensaje de error indicando que no se ingresó ningún nombre.
-   * @description Buscar un personaje por nombre
    */
   SearchCharacter() {
     if (this.nombrePersonaje.trim()) { // Verificamos que se haya ingresado un nombre

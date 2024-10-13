@@ -1,2 +1,54 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root {
+	--ion-color-rojizo: #f70004;
+	--ion-color-rojizo-rgb: 247,0,4;
+	--ion-color-rojizo-contrast: #fffdfd;
+	--ion-color-rojizo-contrast-rgb: 0,0,0;
+	--ion-color-rojizo-shade: #d90004;
+	--ion-color-rojizo-tint: #f81a1d;
+
+    --ion-color-celeste: #8dbada;
+	--ion-color-celeste-rgb: 141,186,218;
+	--ion-color-celeste-contrast: #000000;
+	--ion-color-celeste-contrast-rgb: 0,0,0;
+	--ion-color-celeste-shade: #7ca4c0;
+	--ion-color-celeste-tint: #98c1de;
+
+
+    --ion-color-azulado: #04619d;
+	--ion-color-azulado-rgb: 4,97,157;
+	--ion-color-azulado-contrast: #ffffff;
+	--ion-color-azulado-contrast-rgb: 255,255,255;
+	--ion-color-azulado-shade: #04558a;
+	--ion-color-azulado-tint: #1d71a7;
+
+
+}
+
+.ion-color-azulado {
+	--ion-color-base: var(--ion-color-azulado);
+	--ion-color-base-rgb: var(--ion-color-azulado-rgb);
+	--ion-color-contrast: var(--ion-color-azulado-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-azulado-contrast-rgb);
+	--ion-color-shade: var(--ion-color-azulado-shade);
+	--ion-color-tint: var(--ion-color-azulado-tint);
+}
+
+.ion-color-celeste {
+	--ion-color-base: var(--ion-color-celeste);
+	--ion-color-base-rgb: var(--ion-color-celeste-rgb);
+	--ion-color-contrast: var(--ion-color-celeste-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-celeste-contrast-rgb);
+	--ion-color-shade: var(--ion-color-celeste-shade);
+	--ion-color-tint: var(--ion-color-celeste-tint);
+}
+
+.ion-color-rojizo {
+	--ion-color-base: var(--ion-color-rojizo);
+	--ion-color-base-rgb: var(--ion-color-rojizo-rgb);
+	--ion-color-contrast: var(--ion-color-rojizo-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-rojizo-contrast-rgb);
+	--ion-color-shade: var(--ion-color-rojizo-shade);
+	--ion-color-tint: var(--ion-color-rojizo-tint);
+}

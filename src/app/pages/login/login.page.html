@@ -6,16 +6,15 @@
 
 <ion-content class="fondo-login ion-padding">
   <div class="logo-container">
-    <br />
-    <ion-img src="assets/img/logo.png" alt="Superhéroe" class="logo"></ion-img>
-    <br />
+    <ion-img src="assets/img/logo2.png" alt="Superhéroe" class="logo"></ion-img>
   </div>
 
   <form (ngSubmit)="loginSubmit()">
-    <br />
-    <p style="font-weight: bolder">INICIO DE SESION</p>
+    <p style="font-weight: bolder; font-size: large; color: seashell">
+      Accedé a tu cuenta
+    </p>
 
-    <ion-item class="fondo-login">
+    <ion-item>
       <ion-input
         label="Email"
         type="email"
@@ -33,13 +32,13 @@
     </ion-item>
     <ion-text
       color="danger"
-      style="font-size: x-small; margin-left: 14px"
+      style="font-size: small; margin-left: 5px"
       *ngIf="emailInput.invalid && emailInput.touched || error.errorEmail"
     >
       {{error.errorEmail || "EMAIL ES REQUERIDO"}}
     </ion-text>
 
-    <ion-item class="fondo-login">
+    <ion-item style="margin-top: 10px">
       <ion-input
         label="Password"
         type="password"
@@ -56,25 +55,33 @@
     </ion-item>
     <ion-text
       color="danger"
-      style="font-size: x-small; margin-left: 14px"
+      style="font-size: small; margin-left: 5px"
       *ngIf="passwordInput.invalid && passwordInput.touched || error.errorPassword"
     >
       {{error.errorPassword || "PASWORD ES REQUERIDO"}}
     </ion-text>
 
     <ion-button
-      expand="full"
-      [disabled]="error.errorEmail || error.errorPassword ? true : false"
       type="submit"
-      >Login</ion-button
+      color="rojizo"
+      size="default"
+      class="btninicio-sesion"
+      [disabled]="error.errorEmail || error.errorPassword ? true : false"
     >
+      INICIAR SESIÓN
+    </ion-button>
   </form>
 
-  <br />
-  <ion-label
-    [routerLink]="'/register'"
-    style="cursor: pointer; color: rgb(26, 18, 176)"
-  >
-    No tenés usuario? Registrate
+  <ion-label [routerLink]="'/register'">
+    <p
+      style="
+        cursor: pointer;
+        color: rgb(15, 4, 236);
+        text-align: end;
+        margin-top: 5px;
+      "
+    >
+      No tenés usuario? REGISTRATE
+    </p>
   </ion-label>
 </ion-content>

@@ -18,7 +18,12 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'bienvenidos',
+    loadChildren: () => import('./pages/bienvenidos/bienvenidos.module').then( m => m.BienvenidosPageModule)
   }
+
 ];
 @NgModule({
   imports: [

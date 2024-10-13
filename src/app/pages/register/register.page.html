@@ -1,8 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Registrarse</ion-title>
+    <ion-title>REGISTRARSE</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" color="tertiary"> </ion-back-button>
+      <ion-back-button defaultHref="/" color="white"> </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,14 +11,14 @@
 
   <div class="logo-container">
     <br>
-    <ion-img src="assets/img/logo.png" alt="Superhéroe" class="logo"></ion-img>
+    <ion-img src="assets/img/logo-registro.png" alt="Superhéroe" class="logo"></ion-img>
     <br>
 </div>
 
   <form (ngSubmit)="registerUser()">
     <br>
-    <P style="font-weight: bolder;">CREÁ UNA CUENTA</P> 
-    <ion-item class="fondo-login">
+    <!-- <P style="font-weight: bolder;">CREÁ UNA CUENTA</P> -->
+    <ion-item >
       <ion-input
         label="Email"
         type="email"
@@ -31,7 +31,7 @@
       </ion-input>
     </ion-item>
 
-    <ion-item class="fondo-login">
+    <ion-item >
       <ion-input
         label="Password"
         type="password"
@@ -42,6 +42,6 @@
         [(ngModel)]="password"
       ></ion-input>
     </ion-item>
-    <ion-button expand="full" type="submit">Crear usuario</ion-button>
+    <ion-button expand="full" type="submit" color="azulado" class="btncrear-usuario">Crear usuario</ion-button>
   </form>
 </ion-content>

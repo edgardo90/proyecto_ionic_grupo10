@@ -36,12 +36,12 @@ export class LoginPage implements OnInit {
 
 
   async loginSubmit() {
-    if (!this.email && !this.password) {
-      this.error.errorEmail = "email es requerido";
-      this.error.errorPassword = "password es requerido"
+    if (!this.email || !this.password) {
+      this.error.errorEmail = !this.email ? "email es requerido" : "";
+      this.error.errorPassword = !this.password ? "password es requerido" : "";
       return
     }
-    if(this.error.errorEmail || this.error.errorPassword){
+    if (this.error.errorEmail || this.error.errorPassword) {
       return
     }
     const loginUser = await this.loginService.loginSubmit(this.email, this.password)
@@ -60,7 +60,8 @@ export class LoginPage implements OnInit {
       return
     }
     if (loginUser) {
-      this.router.navigateByUrl("/tabs/tab1")
+      // this.router.navigateByUrl("/tabs/tab1")
+      this.router.navigateByUrl("bienvenidos")
     }
   }
 

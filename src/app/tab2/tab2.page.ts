@@ -50,8 +50,8 @@ export class Tab2Page implements OnInit {
  * @description Para llamar a un método en tab3.page.ts, donde guardamos los personajes favoritos en una lista
  * @param {any} personaje - El personaje elegido como favorito
  */
-  AgregarFavoritos(personaje: any) {
-    this.tab3Page.Agregar_favoritos(personaje);
-    console.log("Agregado a favoritos");
+  AgregarFavoritos(personaje1: any) {
+    this.tab3Page.Agregar_favoritos(personaje1);
+    console.log("Agregado a favoritos desde tab2");
     }
 }

@@ -24,8 +24,7 @@ import { LoginService } from "src/app/services/login.service"
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    HttpClientModule
-    
+    // HttpClientModule // creo que esto no va porque esta obsleto , ahora se utiliza provideHttpClient()
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

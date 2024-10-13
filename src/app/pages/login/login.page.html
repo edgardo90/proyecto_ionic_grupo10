@@ -5,18 +5,17 @@
 </ion-header>
 
 <ion-content class="fondo-login ion-padding">
-
   <div class="logo-container">
-    <br>
+    <br />
     <ion-img src="assets/img/logo.png" alt="Superhéroe" class="logo"></ion-img>
-    <br>
-</div>
-    
-  <form  (ngSubmit)="loginSubmit()" >
-    <br>
-   <P style="font-weight: bolder;">INICIO DE SESION</P> 
+    <br />
+  </div>
+
+  <form (ngSubmit)="loginSubmit()">
+    <br />
+    <p style="font-weight: bolder">INICIO DE SESION</p>
+
     <ion-item class="fondo-login">
-    
       <ion-input
         label="Email"
         type="email"
@@ -25,10 +24,20 @@
         id="email"
         name="email"
         [(ngModel)]="email"
+        (ionInput)="handleInputChange($event)"
         style="--highlight-color: #3363ff"
+        #emailInput="ngModel"
+        required="email"
       >
       </ion-input>
     </ion-item>
+    <ion-text
+      color="danger"
+      style="font-size: x-small; margin-left: 14px"
+      *ngIf="emailInput.invalid && emailInput.touched || error.errorEmail"
+    >
+      {{error.errorEmail || "EMAIL ES REQUERIDO"}}
+    </ion-text>
 
     <ion-item class="fondo-login">
       <ion-input
@@ -39,15 +48,33 @@
         id="password"
         name="password"
         [(ngModel)]="password"
+        (ionInput)="handleInputChange($event)"
         style="--highlight-color: #3363ff"
+        #passwordInput="ngModel"
+        required="password"
       ></ion-input>
     </ion-item>
+    <ion-text
+      color="danger"
+      style="font-size: x-small; margin-left: 14px"
+      *ngIf="passwordInput.invalid && passwordInput.touched || error.errorPassword"
+    >
+      {{error.errorPassword || "PASWORD ES REQUERIDO"}}
+    </ion-text>
 
-    <ion-button expand="full" type="submit">Login</ion-button>
+    <ion-button
+      expand="full"
+      [disabled]="error.errorEmail || error.errorPassword ? true : false"
+      type="submit"
+      >Login</ion-button
+    >
   </form>
-  
+
   <br />
-  <ion-label [routerLink]="'/register'" style="cursor: pointer; color: rgb(26, 18, 176);">
+  <ion-label
+    [routerLink]="'/register'"
+    style="cursor: pointer; color: rgb(26, 18, 176)"
+  >
     No tenés usuario? Registrate
   </ion-label>
 </ion-content>

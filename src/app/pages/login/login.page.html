@@ -5,19 +5,16 @@
 </ion-header>
 
 <ion-content class="fondo-login ion-padding">
-
-  
   <div class="logo-container">
-    
     <ion-img src="assets/img/logo2.png" alt="Superhéroe" class="logo"></ion-img>
-   
-</div>
-    
-  <form  (ngSubmit)="loginSubmit()" >
-    <br>
-   <P style="font-weight: bolder; font-size: large; color: seashell;">Accedé a tu cuenta</P> 
-    <ion-item >
-    
+  </div>
+
+  <form (ngSubmit)="loginSubmit()">
+    <p style="font-weight: bolder; font-size: large; color: seashell">
+      Accedé a tu cuenta
+    </p>
+
+    <ion-item>
       <ion-input
         label="Email"
         type="email"
@@ -26,12 +23,22 @@
         id="email"
         name="email"
         [(ngModel)]="email"
+        (ionInput)="handleInputChange($event)"
         style="--highlight-color: #3363ff"
+        #emailInput="ngModel"
+        required="email"
       >
       </ion-input>
     </ion-item>
+    <ion-text
+      color="danger"
+      style="font-size: small; margin-left: 5px"
+      *ngIf="emailInput.invalid && emailInput.touched || error.errorEmail"
+    >
+      {{error.errorEmail || "EMAIL ES REQUERIDO"}}
+    </ion-text>
 
-    <ion-item >
+    <ion-item style="margin-top: 10px">
       <ion-input
         label="Password"
         type="password"
@@ -40,17 +47,41 @@
         id="password"
         name="password"
         [(ngModel)]="password"
+        (ionInput)="handleInputChange($event)"
         style="--highlight-color: #3363ff"
+        #passwordInput="ngModel"
+        required="password"
       ></ion-input>
     </ion-item>
+    <ion-text
+      color="danger"
+      style="font-size: small; margin-left: 5px"
+      *ngIf="passwordInput.invalid && passwordInput.touched || error.errorPassword"
+    >
+      {{error.errorPassword || "PASWORD ES REQUERIDO"}}
+    </ion-text>
 
-    <ion-button expand="full" type="submit" color="rojizo" class="btninicio-sesion">INICIAR SESIÓN</ion-button>
+    <ion-button
+      type="submit"
+      color="rojizo"
+      size="default"
+      class="btninicio-sesion"
+      [disabled]="error.errorEmail || error.errorPassword ? true : false"
+    >
+      INICIAR SESIÓN
+    </ion-button>
   </form>
-  
-  <br />
-  <ion-label [routerLink]="'/register'" >
-   <p style="cursor: pointer; color: rgb(26, 18, 176); text-align:end;">No tenés usuario? REGISTRATE</p>
+
+  <ion-label [routerLink]="'/register'">
+    <p
+      style="
+        cursor: pointer;
+        color: rgb(15, 4, 236);
+        text-align: end;
+        margin-top: 5px;
+      "
+    >
+      No tenés usuario? REGISTRATE
+    </p>
   </ion-label>
-
-
 </ion-content>

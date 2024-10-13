@@ -87,7 +87,7 @@ export class Tab1Page {
 
 
   ngOnInit() {
-   this.llamarApi('venom');
+   this.llamarApi('');
   }
 
 }

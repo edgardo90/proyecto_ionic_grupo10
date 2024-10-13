@@ -19,7 +19,9 @@ export class Tab3Page {
     this.personajes_favoritos = this.favoritosService.obtenerFavoritos(); // Actualiza la lista en el componente
   }
 
+  /*
   goToCharacterDetail(id: number) {
     this.router.navigate(['/tabs/tab2', id]);
   }
+  */
 }

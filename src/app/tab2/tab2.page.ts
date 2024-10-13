@@ -23,8 +23,13 @@ export class Tab2Page implements OnInit {
     }
   }
 
-
-  // obtengo el personaje por id desde tab1 y lo muestro en tab2
+/**
+ // obtengo el personaje por id desde tab1 y lo muestro en tab2
+ * @function obtenerPersonaje
+ * @description Llamar a la API para obtener los detalles de un personaje por su ID utilizando el servicio CharacterService.
+ *              Asigna la respuesta a la variable personaje si la llamada es exitosa, de lo contrario, maneja los errores.
+ * @param {string} id - El ID del personaje a buscar.
+ */
   obtenerPersonaje(id: string) {
     this.characterService.getCharacterById(id).subscribe(
       (data: any) => {

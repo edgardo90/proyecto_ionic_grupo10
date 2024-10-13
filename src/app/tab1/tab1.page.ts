@@ -32,12 +32,23 @@ export class Tab1Page {
     private http: HttpClient
   ) {}
   
+  
+/**
+ * @function goToCharacterDetail
+ * @description Navegar a la página de detalle del personaje
+ */
 
   goToCharacterDetail(id: number) {
     this.router.navigate(['/tabs/tab2', id]); // Navegar con el ID del personaje
   }
 
+
   
+  /**
+  * @description Buscar un personaje por nombre ingresado por el usuario.
+   *              Si el nombre ingresado no está vacío, llama a la función llamarApi para buscar el personaje.
+   *              Si el nombre está vacío, establece un mensaje de error indicando que no se ingresó ningún nombre.
+   */
   SearchCharacter() {
     if (this.nombrePersonaje.trim()) { // Verificamos que se haya ingresado un nombre
       this.llamarApi(this.nombrePersonaje);
@@ -46,6 +57,13 @@ export class Tab1Page {
     }
   }
 
+
+/**
+ * @function llamarApi
+ * @description Llamar a la API para buscar personajes por nombre utilizando el servicio CharacterService.
+ *              Actualiza la lista de personajes si la respuesta es exitosa, de lo contrario, maneja los errores.
+ * @param {string} nombre - El nombre del personaje a buscar.
+ */
   llamarApi(nombre:string){
 
     this.characterService.getCharacters(nombre).subscribe(

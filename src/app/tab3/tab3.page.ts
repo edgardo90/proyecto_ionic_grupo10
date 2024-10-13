@@ -14,11 +14,6 @@ export class Tab3Page {
     this.personajes_favoritos = this.favoritosService.obtenerFavoritos(); // Cargar favoritos al inicializar
   }
 
-  Agregar_favoritos(personaje: any) {
-    this.favoritosService.agregarFavorito(personaje);
-    this.personajes_favoritos = this.favoritosService.obtenerFavoritos(); // Actualiza la lista en el componente
-  }
-
   goToCharacterDetail(id: number) {
     this.router.navigate(['/tabs/tab2', id]);
   }

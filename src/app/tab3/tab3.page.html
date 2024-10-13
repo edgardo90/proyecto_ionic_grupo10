@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+  
   <ng-container *ngIf="personajes_favoritos && personajes_favoritos.length > 0; else noFavorites">
     <ion-list>
       <ion-item *ngFor="let personaje of personajes_favoritos" (click)="goToCharacterDetail(personaje.id)">
@@ -15,7 +16,7 @@
             <h2>{{ personaje.name }}</h2>
             <img class="imgPersonaje" [src]="personaje.image.url" slot="start"> 
             </div>
-            </ion-card-content>
+        </ion-card-content>
       </ion-item>
     </ion-list>
   </ng-container>

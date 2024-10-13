@@ -1,3 +1,4 @@
+
 ::ng-deep .custom-alert .alert-title {
     color: #f42a2a;
     /* Color deseado del texto del header */
@@ -5,20 +6,28 @@
 
 ::ng-deep .custom-alert .alert-button {
     color: #035fa5;
-    /* Color deseado del texto del header */
     background-color: rgb(255, 255, 255) ;
     padding: 4px;
     border-radius: 5px;
 }
 
 ::ng-deep .fondo-login {
-    --background: #add8e6 !important;
   
-  }
+ --background:  linear-gradient(
+  #005e9b, 
+  rgba(0, 94, 155, 0)  
+),url("/assets/img/background2.jpg") no-repeat center center / cover !important;
+  background-size: cover !important; 
+  background-position: center !important; 
+  
+  height: 100vh; 
+}
+
+
 
 ::ng-deep .logo {
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
    
   }
 
@@ -28,4 +37,18 @@
     justify-content: center;
     
   }
+  
+  ::ng-deep ion-toolbar {
+    --background: #8dbada; 
+    --color: white; 
+  }
+
+
+  ::ng-deep .btninicio-sesion {
+      font-size: 20px; 
+      
+      margin-top: 10px;
+      width: 100%; 
+    }
+    
   

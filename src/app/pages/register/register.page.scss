@@ -1,6 +1,14 @@
 ::ng-deep .fondo-login {
-    --background: #add8e6 !important;
-  }
+  
+  --background:  linear-gradient(
+   #f70004, 
+   rgba(0, 94, 155, 0)  
+ ),url("/assets/img/background2.jpg") no-repeat center center / cover !important;
+   background-size: cover !important; 
+   background-position: center !important; 
+   
+   height: 100vh; 
+ }
 
   ::ng-deep .logo {
     width: 70%;
@@ -14,3 +22,22 @@
     justify-content: center;
     
   }
+
+  ::ng-deep ion-toolbar {
+    --background: #d6264c; 
+    --color: white; 
+  }
+
+  ::ng-deep .btncrear-usuario {
+    font-size: 20px; 
+    
+    margin-top: 10px;
+    width: 100%; 
+  }
+  
+::ng-deep .btninicio-sesion:hover {
+    background-color: #4dd036; /* Color al pasar el mouse por encima */
+    color: #fff; /* Cambiar el color del texto cuando el mouse está encima */
+    cursor: pointer; /* Cambiar el cursor a pointer */
+  }
+  

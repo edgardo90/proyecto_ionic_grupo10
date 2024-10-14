@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FavoritosService } from '../services/favoritos.service';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-tab3',
@@ -16,5 +17,29 @@ export class Tab3Page {
 
   goToCharacterDetail(id: number) {
     this.router.navigate(['/tabs/tab2', id]);
+  }
+
+  capturarImagen(indice: number, nombrePersonaje: string) {
+    const element = document.getElementById('imagen-' + indice) as HTMLElement;
+    if (element) {
+      html2canvas(element, { useCORS: true }).then((canvas: HTMLCanvasElement) => {
+
+        this.descargar(canvas, nombrePersonaje);
+      }).catch(error => {
+        console.error('Error al capturar la imagen:', error);
+      });
+    } else {
+      console.error('No se encontró el elemento con id imagen-' + indice);
+    }
+  }
+  
+
+  //solo web 
+  descargar(canvas: HTMLCanvasElement, nombrePersonaje: string) {
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL();
+    link.download = `${nombrePersonaje}.png`;
+    link.click();
+
   }
 }

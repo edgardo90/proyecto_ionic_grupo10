@@ -10,16 +10,18 @@
   
   <ng-container *ngIf="personajes_favoritos && personajes_favoritos.length > 0; else noFavorites">
     <ion-list>
-      <ion-item *ngFor="let personaje of personajes_favoritos" (click)="goToCharacterDetail(personaje.id)">
+      <ion-item *ngFor="let personaje of personajes_favoritos; let i = index">
         <ion-card-content>
-          <div class="section">
+          <div class="section" >
             <h2>{{ personaje.name }}</h2>
-            <img class="imgPersonaje" [src]="personaje.image.url" slot="start"> 
-            </div>
+            <img class="imgPersonaje" [id]="'imagen-' + i" [src]="personaje.image.url" slot="start">
+          </div>
+          <ion-button class="favorite-button" (click)="capturarImagen(i,personaje.name)">Descargar</ion-button>
         </ion-card-content>
       </ion-item>
     </ion-list>
   </ng-container>
+  
   
   <ng-template #noFavorites>
     <p>No hay personajes favoritos</p>

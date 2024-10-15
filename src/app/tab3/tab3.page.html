@@ -7,23 +7,35 @@
 </ion-header>
 
 <ion-content>
-  
+
   <ng-container *ngIf="personajes_favoritos && personajes_favoritos.length > 0; else noFavorites">
     <ion-list>
-      <ion-item *ngFor="let personaje of personajes_favoritos; let i = index">
-        <ion-card-content>
-          <div class="section" >
-            <h2>{{ personaje.name }}</h2>
-            <img class="imgPersonaje" [id]="'imagen-' + i" [src]="personaje.image.url" slot="start">
-          </div>
-          <ion-button class="favorite-button" (click)="capturarImagen(i,personaje.name)">Descargar</ion-button>
-        </ion-card-content>
-      </ion-item>
+      <ng-container *ngFor="let personaje of personajes_favoritos; let i = index" (click)="goToCharacterDetail(personaje.id)">
+        <ion-item-sliding>
+          <ion-item >
+            <ion-card-content>
+              <div class="section">
+                <h2>{{ personaje.name }}</h2>
+                <img class="imgPersonaje" [id]="'imagen-' + i" [src]="personaje.image.url" slot="start">
+              </div>
+              <ion-button class="favorite-button" (click)="capturarImagen(i,personaje.name)">Descargar</ion-button>
+
+            </ion-card-content>
+          </ion-item>
+
+          <ion-item-options side="end">
+            <ion-item-option color="primary" (click)="quitarFavorito(personaje.id)">Quitar</ion-item-option>
+            <ion-item-option color="secondary"  (click)="capturarImagen(i,personaje.name)" >Descargar</ion-item-option>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ng-container>
     </ion-list>
   </ng-container>
-  
-  
+
   <ng-template #noFavorites>
     <p>No hay personajes favoritos</p>
   </ng-template>
+  
 </ion-content>
+

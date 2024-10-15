@@ -22,8 +22,8 @@ export class FavoritosService {
     return this.personajes_favoritos;
   }
 
-  eliminarFavorito(id: number) {
-    this.personajes_favoritos = this.personajes_favoritos.filter(p => p.id !== id);
-    console.log('Personaje eliminado:', id);
+  actualizarFavoritos(nuevaLista: any[]) {
+    this.personajes_favoritos = nuevaLista;
   }
+
 }

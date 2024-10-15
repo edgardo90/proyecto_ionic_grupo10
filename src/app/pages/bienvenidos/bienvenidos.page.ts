@@ -16,10 +16,11 @@ export class BienvenidosPage implements OnInit {
   ngOnInit() {
   }
 
+  //para simular la carga de la api
   irAInicio() {
     setTimeout(() => {
       this.navCtrl.navigateRoot('/tabs/tab1'); 
-    }, 4000); // Tiempo en milisegundos 
+    }, 6000); // Tiempo en milisegundos 
   }
 
 }

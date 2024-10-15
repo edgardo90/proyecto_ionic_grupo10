@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { LoginService } from "src/app/services/login.service"
 import { AlertController, ToastController } from '@ionic/angular';
+import { errorEmail, errorPassword } from "src/app//pages/login/helperFuntionLogin"
+
 
 
 
@@ -13,6 +15,11 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
   email: string = "";
   password: string = "";
+  errorInput: { errorEmail: string, errorPassword: string } = {
+    errorEmail: "",
+    errorPassword: ""
+  }
+
 
 
   constructor(
@@ -32,16 +39,35 @@ export class RegisterPage implements OnInit {
     await toast.present();
   }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  handleInputChange(event: Event) {
+    const input = event.target as HTMLInputElement; // Cast para acceder a las propiedades
+    if (input.name === "email") {
+      this.errorInput.errorEmail = errorEmail(input.value)
+    }
+    if (input.name === "password") {
+      this.errorInput.errorPassword = errorPassword(input.value)
+    }
   }
 
   async registerUser() {
+    if (!this.email || !this.password) {
+      this.errorInput.errorEmail = !this.email ? "email es requerido" : "";
+      this.errorInput.errorPassword = !this.password ? "password es requerido" : "";
+      await this.presentToast("Por favor completa los datos", "top", "danger")
+      return
+    }
+    if (this.errorInput.errorEmail || this.errorInput.errorPassword) {
+      return
+    }
     const { res, err } = await this.loginService.postRegisterUser(this.email, this.password)
     if (err) {
-      console.log({ err })
+      const isErrorEmail = err.code === "auth/email-already-in-use" ? true : false;
+      const msjErrorEmail = "El correo ingresado ya está en uso. ¿Ya tienes una cuenta? Intenta iniciar sesión o utiliza un correo diferente."
       const alert = await this.alertController.create({
         header: "Error!",
-        message: `${err.message}`,
+        message: `${!isErrorEmail ? err.message : msjErrorEmail}`,
         cssClass: "custom-alert",
         buttons: [
           {

@@ -36,7 +36,7 @@ export class Tab2Page implements OnInit {
  * @param {string} id - El ID del personaje a buscar.
  */
   obtenerPersonaje(id: string) {
-    this.characterService.getCharacterById(id).subscribe(
+    this.characterService.getCharacterById(id).subscribe( // Llamar al servicio para obtener el personaje por ID
       (data: any) => {
         this.personaje = data; // Asignar la respuesta a la variable personaje
         console.log('Detalles del personaje:', this.personaje);
@@ -53,7 +53,7 @@ export class Tab2Page implements OnInit {
  * @param {any} personaje - El personaje elegido como favorito
  */
 AgregarFavoritos() {
-  this.favoritosService.agregarFavorito(this.personaje);
+  this.favoritosService.agregarFavorito(this.personaje); 
   console.log(`${this.personaje.name} ha sido agregado a favoritos.`);
 }
 

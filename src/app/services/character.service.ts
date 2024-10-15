@@ -15,7 +15,9 @@ export class CharacterService {
 
   constructor(
    private http: HttpClient
-  ) { }
+  ) { 
+    
+  }
 
   /**
  * @function getCharacters
@@ -40,6 +42,5 @@ export class CharacterService {
   getCharacterById(id:string){
     return this.http.get<any>(`${this.apiUrl}${this.token}/${id}`);
   }
-
-
+  
 }

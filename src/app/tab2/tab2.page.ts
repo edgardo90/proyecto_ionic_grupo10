@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../services/character.service';
 import { FavoritosService } from '../services/favoritos.service';
-//import { Tab3Page } from '../tab3/tab3.page';
+
 
 @Component({
   selector: 'app-tab2',
@@ -56,4 +56,5 @@ AgregarFavoritos() {
   this.favoritosService.agregarFavorito(this.personaje);
   console.log(`${this.personaje.name} ha sido agregado a favoritos.`);
 }
+
 }

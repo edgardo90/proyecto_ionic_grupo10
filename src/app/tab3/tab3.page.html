@@ -18,16 +18,20 @@
                 <h2>{{ personaje.name }}</h2>
                 <img class="imgPersonaje" [id]="'imagen-' + i" [src]="personaje.image.url" slot="start">
               </div>
-                <ion-button  class="favorite-button" (click)="capturarImagen(i,personaje.name)" >
-                  Descargar
+                <ion-button  class="favorite-button" (click)="descargarPdf(personaje)" >
+                  descargar  <ion-icon name="arrow-down-circle-outline"> </ion-icon>
                 </ion-button>
-              
+                <ion-button  color="medium" (click)="goToCharacterDetail(personaje.id)" >
+                  ver ficha  <ion-icon name="document-text-outline"></ion-icon>
+                </ion-button>
+
             </ion-card-content>
           </ion-item>
 
           <ion-item-options side="end">
             <ion-item-option color="danger" (click)="quitarFavorito(personaje.id)">Quitar</ion-item-option>
-            <ion-item-option color="secondary"  (click)="capturarImagen(i,personaje.name)" >Descargar</ion-item-option>          </ion-item-options>
+                    
+          </ion-item-options>
 
         </ion-item-sliding>
       </ng-container>

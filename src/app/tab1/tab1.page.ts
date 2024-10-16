@@ -53,7 +53,8 @@ export class Tab1Page {
     if (this.nombrePersonaje.trim()) { // Verificamos que se haya ingresado un nombre
       this.llamarApi(this.nombrePersonaje);
     } else {
-      this.error ='Error: No se ingresó ningún nombre'
+      this.error = 'No se ingresó ningún nombre'; // Mostramos el mensaje de error si el campo está vacío
+      this.personajes = []; // Limpiamos la lista de personajes
     }
   }
 
@@ -64,30 +65,30 @@ export class Tab1Page {
  *              Actualiza la lista de personajes si la respuesta es exitosa, de lo contrario, maneja los errores.
  * @param {string} nombre - El nombre del personaje a buscar.
  */
-  llamarApi(nombre:string){
-
-    this.characterService.getCharacters(nombre).subscribe(
-      (data: any) => {
-        if(data.response === 'success'){
-          this.personajes = data.results;
-          console.log(this.personajes);
-          this.error = '';
-        } else {
-          console.log("error la respuesta no fue exitosa");
-          this.error = 'No se encontraron resultados';
-        }
-      },
-      (error: any) => {
-        console.log("error en la peticion",error);
+llamarApi(nombre: string) {
+  this.characterService.getCharacters(nombre).subscribe(
+    (data: any) => {
+      if (data.response === 'success' && data.results && data.results.length > 0) {
+        this.personajes = data.results;  // Actualiza la lista con los personajes obtenidos
+        console.log(this.personajes);
+        this.error = '';  // Limpiamos cualquier mensaje de error anterior
+      } else {
+        console.log("Error: la respuesta no fue exitosa o no se encontraron personajes");
+        this.personajes = [];  // Limpiamos la lista de personajes
+        this.error = 'No se encontraron resultados';  // Mostramos el mensaje de error
       }
-    )
-  }
-
-
+    },
+    (error: any) => {
+      console.log("Error en la petición", error);
+      this.personajes = [];  // Limpiamos la lista en caso de error
+      this.error = 'Error: Hubo un problema al realizar la búsqueda';  // Mostramos un mensaje de error
+    }
+  );
+}
 
 
   ngOnInit() {
-   this.llamarApi('venom');
+   this.llamarApi('super');
   }
 
 }

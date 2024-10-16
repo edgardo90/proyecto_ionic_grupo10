@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FavoritosService } from '../services/favoritos.service';
-import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 
 @Component({
@@ -19,6 +19,11 @@ export class Tab3Page {
     this.personajes_favoritos = this.favoritosService.obtenerFavoritos(); // Cargar favoritos al inicializar
   }
 
+  /**
+   * @function goToCharacterDetail
+   * @description Navega a la página de detalles del personaje con el ID proporcionado.
+   * @param {number} id - El ID del personaje al que se desea navegar.
+   */
   goToCharacterDetail(id: number) {
     this.router.navigate(['/tabs/tab2', id]);
   }
@@ -29,24 +34,67 @@ export class Tab3Page {
     console.log("Personaje eliminado")
   }
 
-  capturarImagen(indice: number, nombrePersonaje: string) {
-    const element = document.getElementById('imagen-' + indice) as HTMLElement;
-    if (element) {
-      html2canvas(element, { useCORS: true }).then((canvas: HTMLCanvasElement) => {
 
-        this.descargar(canvas, nombrePersonaje);
-      }).catch(error => {
-        console.error('Error al capturar la imagen:', error);
-      });
-    } else {
-      console.error('No se encontró el elemento con id imagen-' + indice);
-    }
+
+  /**
+   * @function descargarPdf
+   * @description Genera y descarga un archivo PDF con la información detallada de un personaje.
+   *              Utiliza la biblioteca jsPDF para crear el PDF, incluyendo texto e imágenes.
+   * @param {any} personaje - El objeto que contiene la información del personaje a incluir en el PDF.
+   */
+  descargarPdf(personaje: any) {
+    const pdf = new jsPDF('p', 'mm', 'a4');
+  
+    // Configurar el contenido del PDF
+    pdf.setFontSize(18); // Tamaño de fuente para el título
+    pdf.text(personaje.name, 105, 20, { align: 'center' }); // Ajusta la posición 
+  
+    // Descargar la imagen del personaje
+    const imgData = personaje.image.url; // URL de la imagen del personaje en la api
+  
+    // Definir el tamaño de la imagen en mm (200px)
+    const imgWidth = 200 * 0.264583; // Convertir 200px a mm
+    const imgHeight = 200 * 0.264583; // Convertir 200px a mm
+  
+    // Agregar la imagen al PDF
+    pdf.addImage(imgData, 'PNG', 75, 30, imgWidth, imgHeight); //  imagen, formato, x, y, ancho, alto
+  
+    // Añadir atributos al PDF
+    pdf.setFontSize(16); // Tamaño de fuente para el contenido
+    pdf.text('Información Personal', 20, 100); // Título de la sección
+    pdf.setFontSize(12); // Tamaño de fuente para los detalles
+    pdf.text(`Nombre Completo: ${personaje.biography['full-name']}`, 20, 110); // Detalles del personaje, posición x, posición y
+    pdf.text(`Identidad Secreta: ${personaje.biography['alter-egos']}`, 20, 120); 
+    pdf.text(`Género: ${personaje.appearance.gender}`, 20, 130);
+    pdf.text(`Raza: ${personaje.appearance.race}`, 20, 140);
+  
+    // Sección de Poderes y Habilidades
+    pdf.setFontSize(16);
+    pdf.text('Poderes y Habilidades', 20, 150);
+    pdf.setFontSize(12);
+    pdf.text(`Combate: ${personaje.powerstats.combat}`, 20, 160);
+    pdf.text(`Durabilidad: ${personaje.powerstats.durability}`, 20, 170);
+    pdf.text(`Inteligencia: ${personaje.powerstats.intelligence}`, 20, 180);
+    pdf.text(`Poder: ${personaje.powerstats.power}`, 20, 190);
+    pdf.text(`Velocidad: ${personaje.powerstats.speed}`, 20, 200);
+    pdf.text(`Fuerza: ${personaje.powerstats.strength}`, 20, 210);
+
+    // biografía
+    pdf.setFontSize(16);
+    pdf.text('Biografía', 20, 220);
+    pdf.setFontSize(12);
+    pdf.text(`Publicado por: ${personaje.biography.publisher}`, 20, 230);
+    pdf.text(`Primera Aparición: ${personaje.biography['first-appearance']}`, 20, 240);
+    pdf.text(`Lugar de Nacimiento: ${personaje.biography['place-of-birth']}`, 20, 250);
+    pdf.text(`alineación: ${personaje.biography.alignment}`, 20, 260);
+    pdf.text(`alert-egos: ${personaje.biography['alter-egos']}`, 20, 270);
+
+
+  
+    
+    // Guardar el PDF con el nombre del personaje
+    pdf.save(`${personaje.name}.pdf`); // Nombre del archivo PDF generado
   }
   
-  descargar(canvas: HTMLCanvasElement, nombrePersonaje: string) {
-    const link = document.createElement('a');
-    link.href = canvas.toDataURL();
-    link.download = `${nombrePersonaje}.png`;
-    link.click();
-  }
+  
 }

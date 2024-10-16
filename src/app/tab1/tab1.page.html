@@ -23,9 +23,11 @@
     ></ion-input>
     <ion-button (click)="SearchCharacter()">Buscar</ion-button>
   </ion-item>
-  {{error}}
-
+  
   <ion-card>
+    <div class="error">
+    {{error}}
+    </div>
     <ul *ngIf="personajes.length > 0" class="containers">
       <li *ngFor="let character of personajes">
         <ion-card-content class="cardContainer">

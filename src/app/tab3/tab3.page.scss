@@ -1,0 +1,23 @@
+::ng-deep ion-toolbar {
+        --background: #8dbada; 
+        --color: white; 
+      }
+
+.imgPersonaje{
+        width: 100px;
+        border-radius: 8px;
+        margin: 10px 0;
+      
+}
+
+.sinFavoritos{
+background: url('/assets/img/sin-personajes.jpg');
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100vh; 
+  width: 100vw; 
+ 
+  top: 0;
+  left: 0;
+}

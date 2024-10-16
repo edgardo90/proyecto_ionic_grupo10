@@ -1,24 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Registrarse</ion-title>
+    <ion-title>REGISTRARSE</ion-title>
+
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" color="tertiary"> </ion-back-button>
+      <ion-back-button defaultHref="/" color="white"> </ion-back-button>
     </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="fondo-login ion-padding" >
-
+<ion-content class="fondo-login ion-padding">
   <div class="logo-container">
-    <br>
-    <ion-img src="assets/img/logo.png" alt="Superhéroe" class="logo"></ion-img>
-    <br>
-</div>
+    <br />
+    <ion-img
+      src="assets/img/logo-registro.png"
+      alt="Superhéroe"
+      class="logo"
+    ></ion-img>
+    <br />
+  </div>
 
   <form (ngSubmit)="registerUser()">
-    <br>
-    <P style="font-weight: bolder;">CREÁ UNA CUENTA</P> 
-    <ion-item class="fondo-login">
+    <br />
+    <ion-item>
       <ion-input
         label="Email"
         type="email"
@@ -27,11 +31,22 @@
         id="email"
         name="email"
         [(ngModel)]="email"
+        (ionInput)="handleInputChange($event)"
+        style="--highlight-color: #3363ff"
+        #emailInput="ngModel"
+        required="email"
       >
       </ion-input>
     </ion-item>
+    <ion-text
+      color="danger"
+      style="font-size: small; margin-left: 5px"
+      *ngIf="emailInput.invalid && emailInput.touched || errorInput.errorEmail"
+    >
+      {{errorInput.errorEmail || "EMAIL ES REQUERIDO"}}
+    </ion-text>
 
-    <ion-item class="fondo-login">
+    <ion-item style="margin-top: 10px">
       <ion-input
         label="Password"
         type="password"
@@ -40,8 +55,27 @@
         id="password"
         name="password"
         [(ngModel)]="password"
+        (ionInput)="handleInputChange($event)"
+        style="--highlight-color: #3363ff"
+        #passwordInput="ngModel"
+        required="password"
       ></ion-input>
     </ion-item>
-    <ion-button expand="full" type="submit">Crear usuario</ion-button>
+    <ion-text
+      color="danger"
+      style="font-size: small; margin-left: 5px"
+      *ngIf="passwordInput.invalid && passwordInput.touched || errorInput.errorPassword"
+    >
+      {{errorInput.errorPassword || "PASWORD ES REQUERIDO"}}
+    </ion-text>
+
+    <ion-button
+      type="submit"
+      color="azulado"
+      class="btncrear-usuario"
+      [disabled]="errorInput.errorEmail || errorInput.errorPassword ? true : false"
+    >
+      Crear usuario
+    </ion-button>
   </form>
 </ion-content>

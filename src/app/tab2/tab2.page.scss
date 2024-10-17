@@ -1,41 +1,67 @@
+::ng-deep ion-toolbar {
+  --background: #8dbada; 
+  --color: white; 
+}
+
+
 .character-image {
   width: 150px;
   border-radius: 8px;
   margin: 10px 0;
 }
 
-.favorite-button {
+.btn-favoritos {
   margin-top: 10px;
+  font-size: 15px; 
+  width: 100%; 
+  
 }
 
-ion-card-content {
+::ng-deep ion-card-content {
   padding: 15px;
   border-radius: 8px;
+  margin-bottom: 20px;
+ 
+  
 }
+
+ 
 
 ion-card-title {
   font-size: 1.5em;
   font-weight: bold;
-  color: #222;
+  
 }
 
-h2 {
+.info-personaje h2 {
   font-size: 1.2em;
   margin-top: 20px;
-  color: #ccc;
+  color: #010000;
   border-top: 1px solid #ccc;
   padding-top: 10px;
+  font-weight: bold;
 }
 
-p {
+.info-personaje p {
   margin: 10px 0;
-  color: #ccc;
+  color: #262424;
 }
 
-p strong {
-  color: #ccc;
+.header-personaje {
+  display: flex;
+  flex-direction: column;
 }
 
-.section {
-  margin-bottom: 20px;
+.cuerpo-tarjeta {
+  display: flex;
+  align-items: center;  
+  gap: 10px;  
+}
+
+
+
+.nombre-personaje {
+  font-size: large;
+  text-transform: uppercase;
+  
 }

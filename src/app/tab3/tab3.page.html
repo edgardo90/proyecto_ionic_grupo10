@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <h2>Personajes Favoritos</h2>
+      PERSONAJES FAVORITOS
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,22 +17,27 @@
       >
         <ion-item-sliding>
           <ion-item>
-            <ion-card-content>
-              <div class="section">
-                <h2>{{ personaje.name }}</h2>
+            <ion-card-content class="header-personaje">
+              
+               <div class="nombre-personaje "> {{ personaje.name }} </div>
+                
+             
+              <div class="cuerpo-tarjeta">
                 <img
                   class="imgPersonaje"
                   [id]="'imagen-' + i"
                   [src]="personaje.image.url"
                   slot="start"
                 />
-              </div>
+                <div class="botones-ficha">
                 <ion-button  class="favorite-button" (click)="descargarPdf(personaje)" >
                   descargar  <ion-icon name="arrow-down-circle-outline"> </ion-icon>
                 </ion-button>
                 <ion-button  color="medium" (click)="goToCharacterDetail(personaje.id)" >
                   ver ficha  <ion-icon name="document-text-outline"></ion-icon>
                 </ion-button>
+              </div> <!--fin botones ficha-->
+                </div> <!-- fin cuerpo tarjeta  -->
     
             </ion-card-content>
           </ion-item>

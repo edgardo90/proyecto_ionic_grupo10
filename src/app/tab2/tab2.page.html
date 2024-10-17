@@ -1,20 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <h2>Detalles del personaje</h2>
+      DETALLES DEL PERSONAJE
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="personaje">
   <ion-card id="personaje-card">
-    <ion-card-header>
-      <ion-card-title>{{personaje.name}}</ion-card-title>
+    <ion-card-header class="header-personaje">
+      <ion-card-title class="nombre-personaje">{{personaje.name}}</ion-card-title>
+      <div class="cuerpo-tarjeta">
       <img [src]="personaje.image.url" class="character-image">
-      <ion-button class="favorite-button" (click)="AgregarFavoritos()">Agregar a Favoritos</ion-button>
+    
+      <ion-button color="azulado" class="btn-favoritos" (click)="AgregarFavoritos()">Agregar a Favoritos</ion-button>
+    </div>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content class="info-personaje">
       <!-- <ion-button (click)="caputrarCardEnPdf()">Descargar en PDF</ion-button> -->
       <div class="section">
         <h2>Información Personal</h2>

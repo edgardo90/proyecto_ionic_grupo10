@@ -25,8 +25,7 @@
   </ion-item>
   
   <ion-card>
-    <div class="error">
-    {{error}}
+    <div class="error" *ngIf="error">
     </div>
     <ul *ngIf="personajes.length > 0" class="containers">
       <li *ngFor="let character of personajes">

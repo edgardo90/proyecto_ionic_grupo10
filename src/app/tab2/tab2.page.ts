@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../services/character.service';
 import { FavoritosService } from '../services/favoritos.service';
+import { AlertController, ToastController } from '@ionic/angular';
+
 
 
 @Component({
@@ -17,6 +19,8 @@ export class Tab2Page implements OnInit {
     private route: ActivatedRoute,
     private characterService: CharacterService,
     private favoritosService: FavoritosService,
+    public alertController:AlertController,
+    public toastController:ToastController
  //   private tab3Page: Tab3Page
   ) {}
 
@@ -55,6 +59,13 @@ export class Tab2Page implements OnInit {
 AgregarFavoritos() {
   this.favoritosService.agregarFavorito(this.personaje); 
   console.log(`${this.personaje.name} ha sido agregado a favoritos.`);
+//this.presentToast('Personaje agregado a favoritos');
+
+}
+
+// Función para mostrar un mensaje emergente
+esFavorito(id: number): boolean {
+  return this.favoritosService.esFavorito(id);
 }
 
 }

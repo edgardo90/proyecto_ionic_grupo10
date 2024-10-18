@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       DETALLES DEL PERSONAJE
     </ion-title>
@@ -13,7 +16,10 @@
       <div class="cuerpo-tarjeta">
       <img [src]="personaje.image.url" class="character-image">
     
-      <ion-button color="azulado" class="btn-favoritos" (click)="AgregarFavoritos()">Agregar a Favoritos</ion-button>
+      <ion-button color="azulado" class="btn-favoritos" 
+      [disabled]="esFavorito(personaje.id)" 
+      (click)="AgregarFavoritos()">
+      {{ esFavorito(personaje.id) ? 'En Favoritos' : 'Agregar a Favoritos' }}</ion-button>
     </div>
     </ion-card-header>
 

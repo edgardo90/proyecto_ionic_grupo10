@@ -1,15 +1,12 @@
-<ion-app>
   <ion-menu side="end" contentId="main-content">
     <ion-header>
       <ion-toolbar color="tertiary">
         <ion-title slot="end" style="font-size: small" *ngIf="user?.email">
           Hola {{ user?.displayName ? user?.displayName : user?.email }}
         </ion-title>
-        <ion-buttons slot="start">
-          <ion-menu-toggle>
+          <ion-menu-toggle slot="start">
             <ion-icon name="close-outline" style="font-size: 25px"></ion-icon>
           </ion-menu-toggle>
-        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
@@ -37,4 +34,3 @@
     </ion-header>
     <ng-content></ng-content>
   </div>
-</ion-app>

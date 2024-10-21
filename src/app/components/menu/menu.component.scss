@@ -1,0 +1,31 @@
+ion-menu::part(backdrop) {
+    background-color: rgba(41, 200, 224, 0.674);
+}
+
+ion-menu::part(container) {
+    border-radius: 20px 0px 0 20px;
+
+    box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+}
+
+
+.logobar {
+    width: 50%;
+    /* Cambia el tamaño al 50% del contenedor */
+    max-width: 50px;
+    /* Limita el tamaño máximo de la imagen */
+    height: auto;
+    /* Mantiene la proporción original */
+
+    object-fit: contain;
+    /* Ajusta la imagen sin recortarla ni distorsionarla */
+    display: block;
+    /* Asegura que la imagen se comporte como un bloque */
+    align-items: center;
+}
+
+
+::ng-deep ion-toolbar {
+    --background: #8dbada;
+    --color: white;
+}

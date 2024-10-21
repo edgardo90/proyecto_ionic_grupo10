@@ -17,9 +17,9 @@
       <img [src]="personaje.image.url" class="character-image">
     
       <ion-button color="azulado" class="btn-favoritos" 
-      [disabled]="esFavorito(personaje.id)" 
-      (click)="AgregarFavoritos()">
-      {{ esFavorito(personaje.id) ? 'En Favoritos' : 'Agregar a Favoritos' }}</ion-button>
+      (click)="toggleFavorito(personaje)">
+      {{ esFavorito(personaje.id) ? 'Eliminar de Favoritos' : 'Agregar a Favoritos' }}
+    </ion-button>
     </div>
     </ion-card-header>
 

@@ -63,9 +63,19 @@ AgregarFavoritos() {
 
 }
 
+
 // Función para mostrar un mensaje emergente
 esFavorito(id: number): boolean {
   return this.favoritosService.esFavorito(id);
+}
+
+
+toggleFavorito(personaje: any) {
+  if (this.esFavorito(personaje.id)) {
+    this.favoritosService.quitarFavorito(personaje.id); // Eliminar favorito
+  } else {
+    this.favoritosService.agregarFavorito(personaje); // Agregar favorito
+  }
 }
 
 }

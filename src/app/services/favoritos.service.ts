@@ -64,4 +64,14 @@ async presentToast(mensaje: string) {
   toast.present();
 }
 
+
+
+quitarFavorito(id: number){
+  this.personajes_favoritos = this.personajes_favoritos.filter(p => p.id !== id);
+  this.actualizarFavoritos(this.personajes_favoritos);
+  console.log("Personaje eliminado")
+  this.presentToast('Personaje eliminado de favoritos ❌');
+}
+
+
 }

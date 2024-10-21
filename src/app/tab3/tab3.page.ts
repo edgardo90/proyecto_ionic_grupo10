@@ -19,6 +19,13 @@ export class Tab3Page {
     this.personajes_favoritos = this.favoritosService.obtenerFavoritos(); // Cargar favoritos al inicializar
   }
 
+  ionViewWillEnter() {
+    this.cargarFavoritos();
+  }
+
+  cargarFavoritos() {
+    this.personajes_favoritos = this.favoritosService.obtenerFavoritos();
+  }
   /**
    * @function goToCharacterDetail
    * @description Navega a la página de detalles del personaje con el ID proporcionado.

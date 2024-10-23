@@ -20,7 +20,7 @@ constructor(
 
   agregarFavorito(personaje: any) {
     // Verificar si el personaje ya está en la lista
-    const existe = this.personajes_favoritos.some(p => p.id === personaje.id);
+   // const existe = this.personajes_favoritos.some(p => p.id === personaje.id);
     const result = this.esFavorito(personaje.id);
     
     if (!result) {
@@ -59,7 +59,7 @@ async presentToast(mensaje: string) {
   const toast = await this.toastController.create({
     message: mensaje,
     duration: 2000,
-    color: 'success'
+    color: 'dark'
   });
   toast.present();
 }

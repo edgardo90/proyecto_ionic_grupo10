@@ -1,26 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       DETALLES DEL PERSONAJE
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="content-fondo" *ngIf="personaje" >
+<ion-content class="content-fondo" *ngIf="personaje">
   <ion-card id="personaje-card">
     <ion-card-header class="header-personaje">
       <ion-card-title class="nombre-personaje">{{personaje.name}}</ion-card-title>
       <div class="cuerpo-tarjeta">
-      <img [src]="personaje.image.url" class="character-image">
-    
-      <ion-button color="celeste" class="btn-favoritos" (click)="AgregarFavoritos()" style="font-size:strong" >Agregar a Favoritos</ion-button>
-    </div>
+        <img [src]="personaje.image.url" class="character-image">
+        <ion-button color="celeste" class="btn-favoritos" style="font-size:strong" (click)="toggleFavorito(personaje)">
+          {{ esFavorito(personaje.id) ? 'Eliminar de Favoritos' : 'Agregar a Favoritos' }}
+        </ion-button>
+
+      </div>
     </ion-card-header>
 
     <ion-card-content class="info-personaje">
       <!-- <ion-button (click)="caputrarCardEnPdf()">Descargar en PDF</ion-button> -->
       <div class="section">
-        
+
         <h2>Información Personal</h2>
         <p><strong> Nombre Completo:</strong> {{ personaje.biography['full-name'] }} </p>
         <p><strong>Identidad Secreta:</strong> {{ personaje.biography['alter-egos'] }} </p>
@@ -48,7 +53,7 @@
         <p><strong>Familia:</strong> {{ personaje.connections.relatives }}</p>
       </div>
 
-    
+
 
       <div class="section">
         <h2>Trabajo</h2>

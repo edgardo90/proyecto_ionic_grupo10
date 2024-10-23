@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FavoritosService } from '../services/favoritos.service';
 import { jsPDF } from 'jspdf';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
+
 
 
 @Component({
@@ -18,7 +19,9 @@ export class Tab3Page {
   constructor(
     private router: Router,
     private favoritosService: FavoritosService,
-    private alertcontroller: AlertController
+    private alertcontroller: AlertController,
+    public toastController:ToastController
+
     ) {
     this.personajes_favoritos = this.favoritosService.obtenerFavoritos(); // Cargar favoritos al inicializar
   }
@@ -131,6 +134,7 @@ export class Tab3Page {
             text: 'Eliminar',
             handler: () => {
               this.quitarFavorito(personaje.id);
+              this.favoritosService.presentToast('Personaje eliminado de favoritos ❌');
             }
           }
         ]

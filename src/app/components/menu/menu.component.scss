@@ -1,5 +1,5 @@
 ion-menu::part(backdrop) {
-    background-color: rgba(41, 200, 224, 0.674);
+    background: var(--ion-color-celeste);
 }
 
 ion-menu::part(container) {
@@ -29,3 +29,28 @@ ion-menu::part(container) {
     --background: #8dbada;
     --color: white;
 }
+
+.panel{
+
+    display: flex  !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+}
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Hace la imagen circular */
+    object-fit: cover; /* Para asegurarse de que la imagen se ajuste correctamente */
+    margin: 10px; /* Ajusta el espacio entre la imagen y el texto */
+    
+  }
+
+  .hola-usuario{
+font-size: medium;
+font-weight: bold;
+
+  }
+  

@@ -30,10 +30,10 @@
                   slot="start"
                 />
                 <div class="botones-ficha">
-                <ion-button  class="favorite-button" (click)="descargarPdf(personaje)" >
+                <ion-button color="azulado" class="btn-ficha" (click)="descargarPdf(personaje)" >
                   descargar  <ion-icon name="arrow-down-circle-outline"> </ion-icon>
                 </ion-button>
-                <ion-button  color="medium" (click)="goToCharacterDetail(personaje.id)" >
+                <ion-button  color="warning"  class="btn-ficha"(click)="goToCharacterDetail(personaje.id)" >
                   ver ficha  <ion-icon name="document-text-outline"></ion-icon>
                 </ion-button>
               </div> <!--fin botones ficha-->

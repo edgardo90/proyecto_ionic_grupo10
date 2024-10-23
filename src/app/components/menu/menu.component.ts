@@ -48,7 +48,9 @@ export class MenuComponent implements OnInit {
       this.isLogged = false;
       this.user = undefined;
       localStorage.clear();
-      this.router.navigateByUrl("")
+      this.router.navigateByUrl("").then(() => {
+        window.location.reload();  // Fuerzo la recarga para verificar que no quede datos en el localStorage
+      })
     })
   }
 

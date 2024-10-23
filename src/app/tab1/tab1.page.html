@@ -11,25 +11,21 @@
       <ion-button (click)="SearchCharacter()">Buscar</ion-button>
     </ion-item>
     
-    <ion-card>
       <div class="error" *ngIf="error">
       </div>
-      <ul *ngIf="personajes.length > 0" class="containers">
+      <ul *ngIf="personajes.length > 0" class="containers" style="margin-top: 45px;">
         <li *ngFor="let character of personajes">
-          <ion-card-content class="cardContainer">
-            <ion-list>
-              <ion-item
-                class="cardItem"
-                (click)="goToCharacterDetail(character.id)"
-              >
+          <ion-card
+            class="cardContainer"
+          >
+          <ion-card-content class="cardItem" (click)="goToCharacterDetail(character.id)">
                 <!-- Llamamos la función con el ID del personaje -->
-                <img [src]="character.image.url" />
+                <img loading="lazy" [src]="character.image.url" />
+               
                 <ion-label>{{character.name}}</ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-card-content>
+              </ion-card-content>
+            </ion-card>
         </li>
       </ul>
-    </ion-card>
   </ion-content>
 </app-menu>

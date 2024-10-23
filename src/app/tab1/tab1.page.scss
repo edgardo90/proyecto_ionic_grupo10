@@ -1,94 +1,121 @@
-.errorTitle{
-    color: black;
-    font-weight: bold;
-    font-size: 25px;
+.errorTitle {
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
 }
+
 .error {
-    
-    background: url('/assets/img/sin-resultados.jpg');
-background-position: center;
+
+  background: url('/assets/img/sin-resultados.jpg');
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh; 
-  width: 100vw; 
- 
+  height: 100vh;
+  width: 100vw;
 
- 
+
+
 }
 
-.container{
-    display: flex;
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;      /* Centra verticalmente */
-    flex-direction: column;   /* Asegura que los elementos se coloquen en columna */
-    text-align: center; 
+.container {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  flex-direction: column;
+  /* Asegura que los elementos se coloquen en columna */
+  text-align: center;
 }
-.lista p, h2{
-   text-align: center;
+
+.lista p,
+h2 {
+  text-align: center;
   /* Asegura que los elementos se coloquen en columna */
 }
-.title{
-    
-    font-size: 25px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-li{
-    list-style: none;
-    text-align: center;
+
+.title {
+
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
-.containerAtributos{
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(2, 150px);
-}
-.containers{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+li {
+  list-style: none;
+  text-align: center;
 }
 
-.cardItem img{
-    width:100px;
-    height: 100px;
-    padding: 10px;
-    border-radius: 100%;
-}
-.cardItem ion-label {
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-}
+.cardContainer {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  // padding: 5px;
 
-.cardItem:hover{
-    transform: scale(1);
-    cursor: pointer;
+  // margin: 0px 10px 10px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 12px;
+  // border-radius: 5px;
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
 
-.logobar {
-    width: 50%; /* Cambia el tamaño al 50% del contenedor */
-  max-width: 50px; /* Limita el tamaño máximo de la imagen */
-  height: auto; /* Mantiene la proporción original */
-    
-    object-fit: contain; /* Ajusta la imagen sin recortarla ni distorsionarla */
-    display: block; /* Asegura que la imagen se comporte como un bloque */
-    align-items: center;
-  }
+.containers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-  .buscador {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
-    z-index: 1000;
-    position: fixed;
-   
-    width: 100%
-  }
+  gap: 16px;
+  /* Espacio entre las cartas */
+  // padding: 16px;
+  /* Espacio alrededor del grid */
+  margin: 0;
+  padding: 0;
+  background-color:  var(--ion-color-celeste);
 
-  
-  ::ng-deep ion-toolbar {
-    --background: #8dbada; 
-    --color: white; 
-  }
-  
+}
+
+.cardItem img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8%;
+  object-fit: cover;
+  /* Hace que la imagen mantenga su proporción */
+}
+
+ion-label {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
 
+
+}
+
+.buscador {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  position: fixed;
+
+  width: 100%
+}
+
+ion-card {
+  border-radius: 5%;
+  background-color: rgb(255, 255, 255);
+}
+
+ion-list {
+  background: yellow;
+}

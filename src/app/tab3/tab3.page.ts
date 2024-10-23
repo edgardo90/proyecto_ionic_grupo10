@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FavoritosService } from '../services/favoritos.service';
 import { jsPDF } from 'jspdf';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -11,10 +12,13 @@ import { jsPDF } from 'jspdf';
 })
 export class Tab3Page {
   personajes_favoritos: any[] = [];
+  showAlert = false;
+  personajeParaBorrar: any;
 
   constructor(
     private router: Router,
-    private favoritosService: FavoritosService
+    private favoritosService: FavoritosService,
+    private alertcontroller: AlertController
     ) {
     this.personajes_favoritos = this.favoritosService.obtenerFavoritos(); // Cargar favoritos al inicializar
   }
@@ -28,13 +32,16 @@ export class Tab3Page {
     this.router.navigate(['/tabs/tab2', id]);
   }
 
+  /**
+   * @function quitarFavorito
+   * @description Borra el personaje de la lista de favoritos.
+   * @param {number} id - El ID del personaje al que se desea navegar.
+   */
   quitarFavorito(id: number){
     this.personajes_favoritos = this.personajes_favoritos.filter(p => p.id !== id);
     this.favoritosService.actualizarFavoritos(this.personajes_favoritos);
     console.log("Personaje eliminado")
   }
-
-
 
   /**
    * @function descargarPdf
@@ -96,5 +103,32 @@ export class Tab3Page {
     pdf.save(`${personaje.name}.pdf`); // Nombre del archivo PDF generado
   }
   
+  /**
+   * @function confirmarBorrado
+   * @description Activa una alerta para que el usuario confirme si desea borrar el personaje.
+   * @param {any} personaje - El personaje a borrar
+   */
+    async confirmarBorrado(personaje: any) {
+      const alert = await this.alertcontroller.create({
+        header: 'Confirmar eliminación',
+        message: '¿Estás seguro de que quieres eliminar este personaje de tus favoritos?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: () => {
+              console.log('Eliminación cancelada');
+            }
+          },
+          {
+            text: 'Eliminar',
+            handler: () => {
+              this.quitarFavorito(personaje.id);
+            }
+          }
+        ]
+      });
   
+      await alert.present();
+    }
 }

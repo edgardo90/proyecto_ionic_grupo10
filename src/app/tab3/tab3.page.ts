@@ -78,7 +78,7 @@ export class Tab3Page {
     };
 
     // Configurar el contenido del PDF
-    pdf.setFontSize(16);
+    pdf.setFontSize(30);
     pdf.text(personaje.name, 20, y); // Título del personaje
     y += 10;
 
@@ -91,55 +91,55 @@ export class Tab3Page {
     y += imgHeight + 10;
 
     // Información Personal
-    pdf.setFontSize(14);
+    pdf.setFontSize(20);
     pdf.text('Información Personal', 20, y);
     y += 10;
 
-    pdf.setFontSize(10);
-    y = addTextWithCondition(`Nombre Completo: ${personaje.biography['full-name']}`, 20, y);
-    y = addTextWithCondition(`Identidad Secreta: ${personaje.biography['alter-egos']}`, 20, y);
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Nombre Completo:  ${personaje.biography['full-name']}`, 20, y);
+    y = addTextWithCondition(`Identidad Secreta:  ${personaje.biography['alter-egos']}`, 20, y);
     y = addTextWithCondition(`Género: ${personaje.appearance.gender}`, 20, y);
     y = addTextWithCondition(`Raza: ${personaje.appearance.race}`, 20, y);
     y = addTextWithCondition(`Altura: ${personaje.appearance.height}`, 20, y);
     y = addTextWithCondition(`Peso: ${personaje.appearance.weight}`, 20, y);
-    y = addTextWithCondition(`Color de Ojos: ${personaje.appearance['eye-color']}`, 20, y);
+    y = addTextWithCondition(`Color de Ojos:  ${personaje.appearance['eye-color']}`, 20, y);
     y = addTextWithCondition(`Color de Cabello: ${personaje.appearance['hair-color']}`, 20, y);
-    y = addTextWithCondition(`Lugar de Nacimiento: ${personaje.biography['place-of-birth']}`, 20, y);
+    y = addTextWithCondition(`Lugar de Nacimiento:  ${personaje.biography['place-of-birth']}`, 20, y);
 
     // Biografía
     y += 5;
 
-    pdf.setFontSize(14);
+    pdf.setFontSize(20);
     pdf.text('Biografía', 20, y);
     y += 10;
 
-    pdf.setFontSize(10);
-    y = addTextWithCondition(`Alias: ${personaje.biography.aliases}`, 20, y);
-    y = addTextWithCondition(`Primera Aparición: ${personaje.biography['first-appearance']}`, 20, y);
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Alias:  ${personaje.biography.aliases}`, 20, y);
+    y = addTextWithCondition(`Primera Aparición:  ${personaje.biography['first-appearance']}`, 20, y);
     y = addTextWithCondition(`Publicador: ${personaje.biography.publisher}`, 20, y);
     y = addTextWithCondition(`Alineación: ${personaje.biography.alignment}`, 20, y);
 
     // Conexiones
     y += 5;
 
-    pdf.setFontSize(14);
+    pdf.setFontSize(20);
     pdf.text('Conexiones', 20, y);
     y += 10;
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(12);
     y = addTextWithCondition(`Afiliación: ${personaje.connections['group-affiliation']}`, 20, y);
-    y = addTextWithCondition(`Familia: ${personaje.connections.relatives}`, 20, y);
+    y = addTextWithCondition(`Familia:  ${personaje.connections.relatives}`, 20, y);
 
     // Trabajo
     y += 5;
 
-    pdf.setFontSize(14);
+    pdf.setFontSize(20);
     pdf.text('Trabajo', 20, y);
     y += 10;
 
-    pdf.setFontSize(10);
-    y = addTextWithCondition(`Ocupación: ${personaje.work.occupation}`, 20, y);
-    y = addTextWithCondition(`Base: ${personaje.work.base}`, 20, y);
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Ocupación:    ${personaje.work.occupation}`, 20, y);
+    y = addTextWithCondition(`Base:   ${personaje.work.base}`, 20, y);
 
     // Guardar el PDF con el nombre del personaje
     pdf.save(`${personaje.name}.pdf`);

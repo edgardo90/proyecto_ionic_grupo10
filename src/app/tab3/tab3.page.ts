@@ -78,7 +78,7 @@ export class Tab3Page {
     };
 
     // Configurar el contenido del PDF
-    pdf.setFontSize(40);
+    pdf.setFontSize(30);
     pdf.text(personaje.name, 20, y); // Título del personaje
     y += 10;
 

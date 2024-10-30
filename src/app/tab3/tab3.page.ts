@@ -61,57 +61,91 @@ export class Tab3Page {
    */
   descargarPdf(personaje: any) {
     const pdf = new jsPDF('p', 'mm', 'a4');
-  
-    // Configurar el contenido del PDF
-    pdf.setFontSize(18); // Tamaño de fuente para el título
-    pdf.text(personaje.name, 105, 20, { align: 'center' }); // Ajusta la posición 
-  
-    // Descargar la imagen del personaje
-    const imgData = personaje.image.url; // URL de la imagen del personaje en la api
-  
-    // Definir el tamaño de la imagen en mm (200px)
-    const imgWidth = 200 * 0.264583; // Convertir 200px a mm
-    const imgHeight = 200 * 0.264583; // Convertir 200px a mm
-  
-    // Agregar la imagen al PDF
-    pdf.addImage(imgData, 'PNG', 75, 30, imgWidth, imgHeight); //  imagen, formato, x, y, ancho, alto
-  
-    // Añadir atributos al PDF
-    pdf.setFontSize(16); // Tamaño de fuente para el contenido
-    pdf.text('Información Personal', 20, 100); // Título de la sección
-    pdf.setFontSize(12); // Tamaño de fuente para los detalles
-    pdf.text(`Nombre Completo: ${personaje.biography['full-name']}`, 20, 110); // Detalles del personaje, posición x, posición y
-    pdf.text(`Identidad Secreta: ${personaje.biography['alter-egos']}`, 20, 120); 
-    pdf.text(`Género: ${personaje.appearance.gender}`, 20, 130);
-    pdf.text(`Raza: ${personaje.appearance.race}`, 20, 140);
-  
-    // Sección de Poderes y Habilidades
-    pdf.setFontSize(16);
-    pdf.text('Poderes y Habilidades', 20, 150);
-    pdf.setFontSize(12);
-    pdf.text(`Combate: ${personaje.powerstats.combat}`, 20, 160);
-    pdf.text(`Durabilidad: ${personaje.powerstats.durability}`, 20, 170);
-    pdf.text(`Inteligencia: ${personaje.powerstats.intelligence}`, 20, 180);
-    pdf.text(`Poder: ${personaje.powerstats.power}`, 20, 190);
-    pdf.text(`Velocidad: ${personaje.powerstats.speed}`, 20, 200);
-    pdf.text(`Fuerza: ${personaje.powerstats.strength}`, 20, 210);
-
-    // biografía
-    pdf.setFontSize(16);
-    pdf.text('Biografía', 20, 220);
-    pdf.setFontSize(12);
-    pdf.text(`Publicado por: ${personaje.biography.publisher}`, 20, 230);
-    pdf.text(`Primera Aparición: ${personaje.biography['first-appearance']}`, 20, 240);
-    pdf.text(`Lugar de Nacimiento: ${personaje.biography['place-of-birth']}`, 20, 250);
-    pdf.text(`alineación: ${personaje.biography.alignment}`, 20, 260);
-    pdf.text(`alert-egos: ${personaje.biography['alter-egos']}`, 20, 270);
-
-
-  
+    let y = 10; // Posición inicial de Y
+    const maxLineWidth = 180; // Máximo ancho permitido antes de hacer el salto de línea
     
+    // Función para chequear si el texto supera el ancho permitido
+    const addTextWithCondition = (text: string, x: number, y: number) => {
+        const textWidth = pdf.getTextDimensions(text).w; // Obtener el ancho del texto
+        if (textWidth > maxLineWidth) {
+            const splittedText = pdf.splitTextToSize(text, maxLineWidth); // Dividir texto
+            pdf.text(splittedText, x, y); // Mostrar texto dividido
+            return y + splittedText.length * 5; // Retornar la nueva posición Y después de las líneas
+        } else {
+            pdf.text(text, x, y); // Mostrar el texto en la misma línea
+            return y + 5; // Incrementar un poco la posición y
+        }
+    };
+
+    // Configurar el contenido del PDF
+    pdf.setFontSize(30);
+    pdf.text(personaje.name, 20, y); // Título del personaje
+    y += 10;
+
+    // Descargar la imagen del personaje
+    const imgData = personaje.image.url;
+    const imgWidth = 60;
+    const imgHeight = 80;
+
+    pdf.addImage(imgData, 'PNG', 20, y, imgWidth, imgHeight); // Agregar imagen
+    y += imgHeight + 10;
+
+    // Información Personal
+    pdf.setFontSize(20);
+    pdf.text('Información Personal', 20, y);
+    y += 10;
+
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Nombre Completo:  ${personaje.biography['full-name']}`, 20, y);
+    y = addTextWithCondition(`Identidad Secreta:  ${personaje.biography['alter-egos']}`, 20, y);
+    y = addTextWithCondition(`Género: ${personaje.appearance.gender}`, 20, y);
+    y = addTextWithCondition(`Raza: ${personaje.appearance.race}`, 20, y);
+    y = addTextWithCondition(`Altura: ${personaje.appearance.height}`, 20, y);
+    y = addTextWithCondition(`Peso: ${personaje.appearance.weight}`, 20, y);
+    y = addTextWithCondition(`Color de Ojos:  ${personaje.appearance['eye-color']}`, 20, y);
+    y = addTextWithCondition(`Color de Cabello: ${personaje.appearance['hair-color']}`, 20, y);
+    y = addTextWithCondition(`Lugar de Nacimiento:  ${personaje.biography['place-of-birth']}`, 20, y);
+
+    // Biografía
+    y += 5;
+
+    pdf.setFontSize(20);
+    pdf.text('Biografía', 20, y);
+    y += 10;
+
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Alias:  ${personaje.biography.aliases}`, 20, y);
+    y = addTextWithCondition(`Primera Aparición:  ${personaje.biography['first-appearance']}`, 20, y);
+    y = addTextWithCondition(`Publicador: ${personaje.biography.publisher}`, 20, y);
+    y = addTextWithCondition(`Alineación: ${personaje.biography.alignment}`, 20, y);
+
+    // Conexiones
+    y += 5;
+
+    pdf.setFontSize(20);
+    pdf.text('Conexiones', 20, y);
+    y += 10;
+
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Afiliación: ${personaje.connections['group-affiliation']}`, 20, y);
+    y = addTextWithCondition(`Familia:  ${personaje.connections.relatives}`, 20, y);
+
+    // Trabajo
+    y += 5;
+
+    pdf.setFontSize(20);
+    pdf.text('Trabajo', 20, y);
+    y += 10;
+
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Ocupación:    ${personaje.work.occupation}`, 20, y);
+    y = addTextWithCondition(`Base:   ${personaje.work.base}`, 20, y);
+
     // Guardar el PDF con el nombre del personaje
-    pdf.save(`${personaje.name}.pdf`); // Nombre del archivo PDF generado
-  }
+    pdf.save(`${personaje.name}.pdf`);
+}
+
+
   
   /**
    * @function confirmarBorrado

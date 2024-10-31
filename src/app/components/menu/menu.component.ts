@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from "src/app/services/login.service"
 import { IUser } from "src/interface/user"
 import { Router } from "@angular/router";
+import { ModalController } from '@ionic/angular';
+import { AcercaPage } from 'src/app/pages/acerca/acerca.page';
 
 
 
@@ -18,6 +20,7 @@ export class MenuComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
+    private modalController: ModalController,
   ) { }
 
   ngOnInit() {
@@ -50,6 +53,14 @@ export class MenuComponent implements OnInit {
       localStorage.clear();
       this.router.navigateByUrl("")
     })
+  }
+
+
+  async openInfoModal() {
+    const modal = await this.modalController.create({
+      component: AcercaPage,
+    });
+    return await modal.present();
   }
 
 }

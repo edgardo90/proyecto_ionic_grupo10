@@ -30,4 +30,13 @@ export class LoginService {
     }
     return {res , err}
   }
+
+  getInfoUser(){
+    return this.auth.authState
+  }
+
+  async logOut(){
+    this.auth.signOut()
+  }
+
 }

@@ -1,0 +1,49 @@
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="azulado">
+      <ion-title slot="end"  class="hola-usuario" *ngIf="user?.email">
+        Hola {{ user?.displayName ? user?.displayName : user?.email }}!
+      </ion-title>
+        <ion-menu-toggle slot="start">
+          <ion-icon name="close-outline" style="font-size: 25px"></ion-icon>
+        </ion-menu-toggle>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="panel">
+    <div class="panel">
+    <img src="../assets/img/perfil.jpg" alt="Perfil" class="profile-img">
+     
+    <!-- <ion-button (click)="handleClickInfoUser()"> info user </ion-button> -->
+     
+   
+
+    <ion-button color="rojizo" (click)="handleLogOut()">cerrar sesion</ion-button>
+
+
+    <a (click)="openInfoModal()" class="link-acerca"> Acerca de nuestra app</a>
+    <br>
+   
+
+  </div>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <div class="toolbar-container">
+        <ion-img
+          src="assets/img/logobar.png"
+          alt="Superhéroe"
+          class="logobar"
+        >
+        </ion-img>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ng-content></ng-content>
+</div>

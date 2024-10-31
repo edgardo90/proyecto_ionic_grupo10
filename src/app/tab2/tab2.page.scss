@@ -1,41 +1,100 @@
+::ng-deep ion-toolbar {
+  --background: #8dbada; 
+  --color: white; 
+}
+
+
 .character-image {
   width: 150px;
   border-radius: 8px;
   margin: 10px 0;
 }
 
-.favorite-button {
+.btn-favoritos {
   margin-top: 10px;
+  font-size: 15px; 
+  width: 100%; 
+  
 }
 
-ion-card-content {
+::ng-deep ion-card-content {
   padding: 15px;
   border-radius: 8px;
+  margin-bottom: 10px;
+ 
+ 
+  
 }
+
+ 
 
 ion-card-title {
   font-size: 1.5em;
   font-weight: bold;
-  color: #222;
+  
+  
 }
 
-h2 {
+.info-personaje h2 {
   font-size: 1.2em;
   margin-top: 20px;
-  color: #ccc;
+  color: #010000;
   border-top: 1px solid #ccc;
   padding-top: 10px;
+  font-weight: bold;
 }
 
-p {
+.info-personaje p {
   margin: 10px 0;
-  color: #ccc;
+  color: #262424;
+  background: var(--ion-color-celeste);
 }
 
-p strong {
-  color: #ccc;
+.header-personaje {
+  display: flex;
+  flex-direction: column;
+}
+
+.cuerpo-tarjeta {
+  display: flex;
+  align-items: center;  
+  gap: 10px;  
+  background: var(--ion-color-rojizo);
+  padding: 10px;
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+
+ 
+}
+
+
+ion-card {
+  background: var(--ion-color-celeste);
+  padding: 0%;
+ 
+ 
+}
+
+
+
+.nombre-personaje {
+  font-size: large;
+  text-transform: uppercase;
+  
 }
 
 .section {
-  margin-bottom: 20px;
+  background: var(--ion-color-rojizo);
+  text-indent: 10px; /* Espacio interno dentro del contenedor */
+  padding-bottom: 5px;
+  text-wrap:wrap;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+
+}
+
+.section p {
+  margin: 5px 0; /* Espaciado entre los párrafos */
+  padding: 5px; /* Añadir padding para todas las líneas */
+    text-align: justify;
 }

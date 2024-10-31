@@ -1,0 +1,64 @@
+ion-menu::part(backdrop) {
+    background: var(--ion-color-celeste);
+}
+
+ion-menu::part(container) {
+    border-radius: 20px 0px 0 20px;
+
+    box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+}
+
+
+.logobar {
+    width: 50%;
+    /* Cambia el tamaño al 50% del contenedor */
+    max-width: 50px;
+    /* Limita el tamaño máximo de la imagen */
+    height: auto;
+    /* Mantiene la proporción original */
+
+    object-fit: contain;
+    /* Ajusta la imagen sin recortarla ni distorsionarla */
+    display: block;
+    /* Asegura que la imagen se comporte como un bloque */
+    align-items: center;
+}
+
+
+::ng-deep ion-toolbar {
+    --background: #8dbada;
+    --color: white;
+}
+
+.panel{
+
+    display: flex  !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Hace la imagen circular */
+    object-fit: cover; /* Para asegurarse de que la imagen se ajuste correctamente */
+    margin: 10px; /* Ajusta el espacio entre la imagen y el texto */
+    
+  }
+
+  .hola-usuario{
+font-size: medium;
+font-weight: bold;
+
+  }
+
+  .link-acerca{
+
+    margin-top: 100%;
+     
+    color: var(--ion-color-azulado);
+    text-decoration: none;
+  }
+  

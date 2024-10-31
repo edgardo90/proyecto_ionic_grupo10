@@ -37,7 +37,7 @@ ion-menu::part(container) {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    margin: 20px;
+    margin-top: 20px;
 }
 .profile-img {
     width: 150px;
@@ -52,5 +52,13 @@ ion-menu::part(container) {
 font-size: medium;
 font-weight: bold;
 
+  }
+
+  .link-acerca{
+
+    margin-top: 100%;
+     
+    color: var(--ion-color-azulado);
+    text-decoration: none;
   }
   

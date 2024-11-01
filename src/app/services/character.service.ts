@@ -27,7 +27,7 @@ export class CharacterService {
  * @returns {Observable<any>} - Un observable que emite la respuesta de la API.
  */
   getCharacters(personaje: string):Observable<any>{
-    const url = `${this.apiUrl}${this.token}${this.endPoint}${personaje}`;
+    const url = `https://quixotic-ong-edgardo90.koyeb.app/api/superhero/search/${personaje}`;
     return this.http.get<any>(url);
   }
 
@@ -40,7 +40,7 @@ export class CharacterService {
  * @returns {Observable<any>} - Un observable que emite la respuesta de la API.
  */
   getCharacterById(id:string){
-    return this.http.get<any>(`${this.apiUrl}${this.token}/${id}`);
+    return this.http.get<any>(`https://quixotic-ong-edgardo90.koyeb.app/api/superhero/${id}`);
   }
   
 }

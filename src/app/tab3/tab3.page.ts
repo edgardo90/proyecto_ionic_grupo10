@@ -226,32 +226,140 @@ export class Tab3Page {
     await alert.present();
   }
 
-  captureScreen() {
-    const element = document.getElementById('pdf') as HTMLElement;
-
-    html2canvas(element).then((canvas: HTMLCanvasElement) => {
-      this.downloadWeb(canvas);
-      if(this.platform.is('capacitor')) {
-        this.shareMobile(canvas);
-      }else{
-        this.downloadWeb(canvas);}
-    });
-  }
-
-  downloadWeb(canvas: HTMLCanvasElement) {
-    const link = document.createElement('a');
-    link.href = canvas.toDataURL();
-    link.download = 'personaje.png';
-    link.click();
+  descargar(personaje: any) {
+    if (this.platform.is('mobile')) {
+      this.shareMobile(personaje);
+    } else {
+      this.descargarPdf(personaje);
+    }
   }
 
   async shareMobile(personaje: any) {
     const pdf = new jsPDF('p', 'mm', 'a4');
+    let y = 10; // Posición inicial de Y
+    const maxLineWidth = 180; // Máximo ancho permitido antes de hacer el salto de línea
+
+    // Función para chequear si el texto supera el ancho permitido
+    const addTextWithCondition = (text: string, x: number, y: number) => {
+      const textWidth = pdf.getTextDimensions(text).w; // Obtener el ancho del texto
+      if (textWidth > maxLineWidth) {
+        const splittedText = pdf.splitTextToSize(text, maxLineWidth); // Dividir texto
+        pdf.text(splittedText, x, y); // Mostrar texto dividido
+        return y + splittedText.length * 5; // Retornar la nueva posición Y después de las líneas
+      } else {
+        pdf.text(text, x, y); // Mostrar el texto en la misma línea
+        return y + 5; // Incrementar un poco la posición y
+      }
+    };
+
+    // Configurar el contenido del PDF
     pdf.setFontSize(30);
-    pdf.text('Comprobante de Descarga', 20, 20); // Añadir "Comprobante de Descarga" en la parte superior
+    pdf.text(personaje.name, 20, y); // Título del personaje
+    y += 10;
+
+    // Descargar la imagen del personaje
+    const imgData = personaje.image.url;
+    const imgWidth = 60;
+    const imgHeight = 80;
+
+   // pdf.addImage(imgData, 'PNG', 20, y, imgWidth, imgHeight); // Agregar imagen
+   // y += imgHeight + 10;
+
+    // Información Personal
+    pdf.setFontSize(20);
+    pdf.text('Información Personal', 20, y);
+    y += 10;
+
     pdf.setFontSize(12);
-    pdf.text(`Nombre del personaje: ${personaje.name}`, 20, 40);
-    
+    y = addTextWithCondition(
+      `Nombre Completo:  ${personaje.biography['full-name']}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(
+      `Identidad Secreta:  ${personaje.biography['alter-egos']}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(`Género: ${personaje.appearance.gender}`, 20, y);
+    y = addTextWithCondition(`Raza: ${personaje.appearance.race}`, 20, y);
+    y = addTextWithCondition(`Altura: ${personaje.appearance.height}`, 20, y);
+    y = addTextWithCondition(`Peso: ${personaje.appearance.weight}`, 20, y);
+    y = addTextWithCondition(
+      `Color de Ojos:  ${personaje.appearance['eye-color']}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(
+      `Color de Cabello: ${personaje.appearance['hair-color']}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(
+      `Lugar de Nacimiento:  ${personaje.biography['place-of-birth']}`,
+      20,
+      y
+    );
+
+    // Biografía
+    y += 5;
+
+    pdf.setFontSize(20);
+    pdf.text('Biografía', 20, y);
+    y += 10;
+
+    pdf.setFontSize(12);
+    y = addTextWithCondition(`Alias:  ${personaje.biography.aliases}`, 20, y);
+    y = addTextWithCondition(
+      `Primera Aparición:  ${personaje.biography['first-appearance']}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(
+      `Publicador: ${personaje.biography.publisher}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(
+      `Alineación: ${personaje.biography.alignment}`,
+      20,
+      y
+    );
+
+    // Conexiones
+    y += 5;
+
+    pdf.setFontSize(20);
+    pdf.text('Conexiones', 20, y);
+    y += 10;
+
+    pdf.setFontSize(12);
+    y = addTextWithCondition(
+      `Afiliación: ${personaje.connections['group-affiliation']}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(
+      `Familia:  ${personaje.connections.relatives}`,
+      20,
+      y
+    );
+
+    // Trabajo
+    y += 5;
+
+    pdf.setFontSize(20);
+    pdf.text('Trabajo', 20, y);
+    y += 10;
+
+    pdf.setFontSize(12);
+    y = addTextWithCondition(
+      `Ocupación:    ${personaje.work.occupation}`,
+      20,
+      y
+    );
+    y = addTextWithCondition(`Base:   ${personaje.work.base}`, 20, y);
+
     const pdfOutput = pdf.output('datauristring');
     const base64 = pdfOutput.split(',')[1]; // Extraer solo la parte base64 del URI
   

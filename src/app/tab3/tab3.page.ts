@@ -57,6 +57,24 @@ export class Tab3Page {
     console.log('Personaje eliminado');
   }
 
+// funcion descargar
+  /**
+   * @function descargar
+   * @description Descarga la información de un personaje. Si la plataforma es móvil, comparte la información
+   *              utilizando la función `shareMobile`. Si no, genera y descarga un archivo PDF con la información
+   *              detallada del personaje utilizando la función `descargarPdf`.
+   * @param {any} personaje - La información del personaje a descargar.
+   */
+  descargar(personaje: any) {
+    if (this.platform.is('mobile')) {
+      this.shareMobile(personaje);
+    } else {
+      this.descargarPdf(personaje);
+    }
+  }
+
+
+  //descargar version web
   /**
    * @function descargarPdf
    * @description Genera y descarga un archivo PDF con la información detallada de un personaje.
@@ -64,12 +82,14 @@ export class Tab3Page {
    * @param {any} personaje - El objeto que contiene la información del personaje a incluir en el PDF.
    */
   descargarPdf(personaje: any) {
-    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdf = new jsPDF('p', 'mm', 'a4'); // jsPDF(orientación, unidad de medida, tamaño de página) orientación: 'p' para retrato'
+
     let y = 10; // Posición inicial de Y
     const maxLineWidth = 180; // Máximo ancho permitido antes de hacer el salto de línea
 
     // Función para chequear si el texto supera el ancho permitido
-    const addTextWithCondition = (text: string, x: number, y: number) => {
+    const addTextWithCondition = (text: string, x: number, y: number) => { // recibe el texto, la posición x y la posición y
+
       const textWidth = pdf.getTextDimensions(text).w; // Obtener el ancho del texto
       if (textWidth > maxLineWidth) {
         const splittedText = pdf.splitTextToSize(text, maxLineWidth); // Dividir texto
@@ -91,7 +111,7 @@ export class Tab3Page {
     const imgWidth = 60;
     const imgHeight = 80;
 
-    // pdf.addImage(imgData, 'PNG', 20, y, imgWidth, imgHeight); // Agregar imagen
+   // pdf.addImage(imgData, 'PNG', 20, y, imgWidth, imgHeight); // Agregar imagen
     y += imgHeight + 10;
 
     // Información Personal
@@ -193,47 +213,7 @@ export class Tab3Page {
     pdf.save(`${personaje.name}.pdf`);
   }
 
-  /**
-   * @function confirmarBorrado
-   * @description Activa una alerta para que el usuario confirme si desea borrar el personaje.
-   * @param {any} personaje - El personaje a borrar
-   */
-  async confirmarBorrado(personaje: any) {
-    const alert = await this.alertcontroller.create({
-      header: 'Confirmar eliminación',
-      message:
-        '¿Estás seguro de que quieres eliminar este personaje de tus favoritos?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            console.log('Eliminación cancelada');
-          },
-        },
-        {
-          text: 'Eliminar',
-          handler: () => {
-            this.quitarFavorito(personaje.id);
-            this.favoritosService.presentToast(
-              'Personaje eliminado de favoritos ❌'
-            );
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-  }
-
-  descargar(personaje: any) {
-    if (this.platform.is('mobile')) {
-      this.shareMobile(personaje);
-    } else {
-      this.descargarPdf(personaje);
-    }
-  }
-
+  //funcion descargar y compartir movil
   async shareMobile(personaje: any) {
     const pdf = new jsPDF('p', 'mm', 'a4');
     let y = 10; // Posición inicial de Y
@@ -382,6 +362,42 @@ export class Tab3Page {
       });
     });
   }
+
+
+  /**
+   * @function confirmarBorrado
+   * @description Activa una alerta para que el usuario confirme si desea borrar el personaje.
+   * @param {any} personaje - El personaje a borrar
+   */
+  async confirmarBorrado(personaje: any) {
+    const alert = await this.alertcontroller.create({
+      header: 'Confirmar eliminación',
+      message:
+        '¿Estás seguro de que quieres eliminar este personaje de tus favoritos?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Eliminación cancelada');
+          },
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.quitarFavorito(personaje.id);
+            this.favoritosService.presentToast(
+              'Personaje eliminado de favoritos ❌'
+            );
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+
   
 
   

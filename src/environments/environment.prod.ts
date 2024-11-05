@@ -1,6 +1,5 @@
-
 export const environment = {
-  production: false,
+  production: true,
   firebaseConfig: {
     apiKey: "AIzaSyC3Hj2ce05uTHtDJcDgrLfL3oeowSBRJVw",
     authDomain: "presopuestoapp.firebaseapp.com",
